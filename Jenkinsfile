@@ -14,6 +14,11 @@ pipeline {
         stage('Test') {
             steps {
                 git url: "https://github.com/Kaizas22/asfjakl-.git", branch: "master"
+                checkout scm: [
+                    $class: 'GitSCM',
+                    userRemoteConfigs: [[url: "https://github.com/Kaizas22/asfjakl-.git"]],
+                    branches: [[name: "v1.0"]]
+                ]
                 echo 'Testing..'
             }
         }
