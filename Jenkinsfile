@@ -17,9 +17,8 @@ pipeline {
                 checkout scm: [
                     $class: 'GitSCM',
                     userRemoteConfigs: [[url: "https://github.com/Kaizas22/asfjakl-.git"]],
-                    branches: [[name: "v1.0"]]
+                    branches: [[name: "v1.2"]]
                 ]
-                git url "https://github.com/Kaizas22/asfjakl-.git", branches: "v1.0"
                 echo 'Testing..'
             }
         }
