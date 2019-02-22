@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                git url:'https://github.com/Kaizas22/asfjakl-.git' branch: "master"
+                git url: "https://github.com/Kaizas22/asfjakl-.git", branch: "master"
                 echo 'Testing..'
             }
         }
