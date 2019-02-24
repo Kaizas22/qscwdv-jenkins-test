@@ -1,3 +1,24 @@
+def choose_yocto_branch(version) {
+    def result
+    switch (version) {
+        case 'master':
+            result = 'master'
+            break
+        case 'master-next':
+        case 'v1.2':
+            result = 'v1.2'
+            break
+        case 'v1.0':
+        case 'v1.1':
+            result = 'master-next'
+            break
+        default:
+            result = 'v1.0'
+            break
+    }
+    return this
+}
+
 node {
     
     //liste = ["master","v1.0","v1.1","v1.2"]
@@ -7,10 +28,9 @@ node {
     parameters {
         choice(name: 'SOME_CHOICE', choices: ['master', 'master-next', 'v1.0', 'v1.1', 'v1.2'], description: 'Some choice parameter')
     }
-    //def extFunction = load("branchChooser.groovy")
+    echo choose_yocto_branch(params.SOME_CHOICE)
     
     stage('Checkout') {
-        //extFunction.choose_yocto_branch(params.SOME_CHOICE)
         checkout scm: [
             $class: 'GitSCM',
             userRemoteConfigs: [[url: "https://github.com/Kaizas22/asfjakl-.git"]],
