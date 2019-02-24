@@ -14,7 +14,8 @@ pipeline {
             steps {
                 script {
                     def function = load "branchChooser.groovy"
-                    echo function.branchChooser(params.SOME_CHOICE)
+                    def branch = function.branchChooser(params.SOME_CHOICE)
+                    echo 'branch'
                 }
                 checkout scm: [
                     $class: 'GitSCM',
