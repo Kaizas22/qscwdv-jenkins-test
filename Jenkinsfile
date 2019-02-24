@@ -2,10 +2,10 @@ pipeline {
     agent any
     
     //buildDiscarder(logRotator(daysToKeepStr: '', numToKeepStr: '5', artifactDaysToKeepStr: '', artifactNumToKeepStr: '5'))
-    liste = ["master","v1.0","v1.1","v1.2"]
-    properties ([
+    //liste = ["master","v1.0","v1.1","v1.2"]
+    options ([
         parameters ([
-            choice(choices: liste.join("\n"), description: 'Some choice parameter', name: 'SOME_CHOICE')
+            choice(choices: ["master","v1.0","v1.1","v1.2"].join("\n"), description: 'Some choice parameter', name: 'SOME_CHOICE')
         ])
     ])
     
