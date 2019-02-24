@@ -1,5 +1,4 @@
 node {
-    agent any
     
     //liste = ["master","v1.0","v1.1","v1.2"]
     options {
@@ -10,7 +9,6 @@ node {
     }
         def extFunction = load("branchChooser.groovy")
     
-    stages {
         stage('Checkout') {
             steps {
                 script {
@@ -38,5 +36,4 @@ node {
                 echo 'Deploying....'
             }
         }
-    }
 }
