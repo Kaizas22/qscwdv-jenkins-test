@@ -16,6 +16,5 @@ def choose_yocto_branch(version) {
             result = 'v1.0'
             break
     }
-    result
+    return result
 }
-return result
