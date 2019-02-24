@@ -1,4 +1,4 @@
-node {
+pipeline {
     agent any
     
     //liste = ["master","v1.0","v1.1","v1.2"]
@@ -11,20 +11,25 @@ node {
 
     stages {
         stage('Checkout') {
+            when {
+                params.SOME_CHOICE 'master'
+            }
             steps {
-            if(params.SOME_CHOICE == "master")
-            {
                 git url: "https://github.com/Kaizas22/asfjakl-.git", branch: "master"
             }
-            else
-            {
+            when {
+                not {
+                    params.SOME_CHOICE 'master'
+                }
+            }
+            steps {
                 checkout scm: [
                     $class: 'GitSCM',
                     userRemoteConfigs: [[url: "https://github.com/Kaizas22/asfjakl-.git"]],
                     branches: [[name: "${params.SOME_CHOICE}"]]
                 ]
             }
-            }}
+        }
         stage('Build') {
             steps {
                 echo 'Building..'
