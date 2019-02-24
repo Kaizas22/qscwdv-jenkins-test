@@ -1,4 +1,4 @@
-def extFunction
+def extFunction = load "branchChooser.groovy
 pipeline {
     agent any
     
@@ -14,7 +14,6 @@ pipeline {
         stage('Checkout') {
             steps {
                 script {
-                    extFunction = load "branchChooser.groovy"
                     extFunction.choose_yocto_branch(params.SOME_CHOICE)
                 }
                 checkout scm: [
