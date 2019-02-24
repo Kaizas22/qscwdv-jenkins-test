@@ -11,6 +11,7 @@ pipeline {
 
     stages {
         stage('Checkout') {
+            steps {
             if(params.SOME_CHOICE == "master")
             {
                 git url: "https://github.com/Kaizas22/asfjakl-.git", branch: "master"
@@ -23,7 +24,7 @@ pipeline {
                     branches: [[name: "${params.SOME_CHOICE}"]]
                 ]
             }
-        }       
+            }}
         stage('Build') {
             steps {
                 echo 'Building..'
