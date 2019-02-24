@@ -1,4 +1,4 @@
-pipeline {
+node {
     agent any
     
     //liste = ["master","v1.0","v1.1","v1.2"]
@@ -8,7 +8,7 @@ pipeline {
     parameters {
         choice(name: 'SOME_CHOICE', choices: ['master', 'v1.0', 'v1.1', 'v1.2'], description: 'Some choice parameter')
     }
-node {
+
     stages {
         stage('Checkout') {
             steps {
@@ -41,4 +41,4 @@ node {
             }
         }
     }
-}}
+}
