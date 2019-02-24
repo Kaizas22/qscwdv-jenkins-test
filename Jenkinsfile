@@ -12,18 +12,11 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                script {
-                    if (params.SOME_CHOICE == 'master' ) {
-                        git url: "https://github.com/Kaizas22/asfjakl-.git", branch: "master"
-                    }
-                    else {
-                        checkout scm: [
-                            $class: 'GitSCM',
-                            userRemoteConfigs: [[url: "https://github.com/Kaizas22/asfjakl-.git"]],
-                            branches: [[name: "${params.SOME_CHOICE}"]]
-                        ]
-                    }   
-                }
+                checkout scm: [
+                    $class: 'GitSCM',
+                    userRemoteConfigs: [[url: "https://github.com/Kaizas22/asfjakl-.git"]],
+                    branches: [[name: "${params.SOME_CHOICE}"]]
+                ]
             }
         }
         stage('Build') {
