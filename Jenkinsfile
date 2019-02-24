@@ -1,3 +1,4 @@
+def extFunction
 pipeline {
     agent any
     
@@ -9,14 +10,12 @@ pipeline {
         choice(name: 'SOME_CHOICE', choices: ['master', 'master-next', 'v1.0', 'v1.1', 'v1.2'], description: 'Some choice parameter')
     }
     
-    def function
-    
     stages {
         stage('Checkout') {
             steps {
                 script {
-                    function = load "branchChooser.groovy"
-                    def branch = function.choose_yocto_branch(params.SOME_CHOICE)
+                    extFunction = load "branchChooser.groovy"
+                    def branch = extFunction.choose_yocto_branch(params.SOME_CHOICE)
                     echo branch
                 }
                 checkout scm: [
