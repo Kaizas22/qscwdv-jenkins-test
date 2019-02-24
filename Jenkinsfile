@@ -14,7 +14,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                echo ${params.SOME_CHOICE}
+                echo "${params.SOME_CHOICE}"
             }
         }
         stage('Test') {
