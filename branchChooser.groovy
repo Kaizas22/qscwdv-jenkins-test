@@ -9,7 +9,7 @@ def choose_yocto_branch(version) {
             result = 'v1.2'
             break
         case 'v1.0':
-        case 'v1.1'
+        case 'v1.1':
             result = 'master-next'
             break
         default:
