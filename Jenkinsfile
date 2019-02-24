@@ -28,7 +28,8 @@ node {
     parameters {
         choice(name: 'SOME_CHOICE', choices: ['master', 'master-next', 'v1.0', 'v1.1', 'v1.2'], description: 'Some choice parameter')
     }
-    choose_yocto_branch(params.SOME_CHOICE)
+    //choose_yocto_branch(params.SOME_CHOICE)
+    sh 'versionChooser.sh'
     
     stage('Checkout') {
         checkout scm: [
