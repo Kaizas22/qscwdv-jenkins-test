@@ -11,7 +11,7 @@ pipeline {
 
     stages {
         stage('Checkout') {
-            if(${params.SOME_CHOICE} == "master")
+            if(params.SOME_CHOICE == "master")
             {
                 git url: "https://github.com/Kaizas22/asfjakl-.git", branch: "master"
             }
