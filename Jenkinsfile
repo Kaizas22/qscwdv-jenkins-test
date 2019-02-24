@@ -6,7 +6,7 @@ pipeline {
         buildDiscarder(logRotator(daysToKeepStr: '', numToKeepStr: '5', artifactDaysToKeepStr: '', artifactNumToKeepStr: '5'))
     }
     parameters {
-        choice(name: 'SOME_CHOICE', choices: ['master', 'v1.0', 'v1.1', 'v1.2'], description: 'Some choice parameter')
+        choice(name: 'SOME_CHOICE', choices: ['master', 'master-next', 'v1.0', 'v1.1', 'v1.2'], description: 'Some choice parameter')
     }
 
     stages {
