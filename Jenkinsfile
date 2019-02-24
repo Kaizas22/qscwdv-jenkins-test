@@ -1,4 +1,4 @@
-def extFunction = load "branchChooser.groovy
+def extFunction = load "branchChooser.groovy"
 pipeline {
     agent any
     
