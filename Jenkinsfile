@@ -14,7 +14,7 @@ pipeline {
             steps {
                 script {
                     def function = load "branchChooser.groovy"
-                    def branch = function.branchChooser(params.SOME_CHOICE)
+                    def branch = function.choose_yocto_branch(params.SOME_CHOICE)
                     echo 'branch'
                 }
                 checkout scm: [
