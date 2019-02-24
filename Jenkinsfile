@@ -1,4 +1,4 @@
-pipeline {
+node {
     agent any
     
     //liste = ["master","v1.0","v1.1","v1.2"]
@@ -8,9 +8,7 @@ pipeline {
     parameters {
         choice(name: 'SOME_CHOICE', choices: ['master', 'master-next', 'v1.0', 'v1.1', 'v1.2'], description: 'Some choice parameter')
     }
-    script {
         def extFunction = load("branchChooser.groovy")
-    }
     
     stages {
         stage('Checkout') {
