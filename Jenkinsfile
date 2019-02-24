@@ -11,20 +11,18 @@ pipeline {
 
     stages {
         stage('Checkout') {
-            steps {
-                echo "You choose: ${params.SOME_CHOICE}"
-                if("${params.SOME_CHOICE}" == "master")
-                {
-                    git url: "https://github.com/Kaizas22/asfjakl-.git", branch: "master"
-                }
-                else
-                {
-                    checkout scm: [
-                        $class: 'GitSCM',
-                        userRemoteConfigs: [[url: "https://github.com/Kaizas22/asfjakl-.git"]],
-                        branches: [[name: "${params.SOME_CHOICE}"]]
-                    ]
-                }
+            echo "You choose: ${params.SOME_CHOICE}"
+            if("${params.SOME_CHOICE}" == "master")
+            {
+                git url: "https://github.com/Kaizas22/asfjakl-.git", branch: "master"
+            }
+            else
+            {
+                checkout scm: [
+                    $class: 'GitSCM',
+                    userRemoteConfigs: [[url: "https://github.com/Kaizas22/asfjakl-.git"]],
+                    branches: [[name: "${params.SOME_CHOICE}"]]
+                ]
             }
         }       
         stage('Build') {
