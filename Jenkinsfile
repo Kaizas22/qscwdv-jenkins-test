@@ -44,6 +44,7 @@ node {
     sh 'scripts/versionChooser.sh'
     
     stage('Checkout') {
+        checkout scm
         checkout scm: [
             $class: 'GitSCM',
             userRemoteConfigs: [[url: "https://github.com/Kaizas22/asfjakl-.git"]],
