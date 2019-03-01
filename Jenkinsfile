@@ -25,6 +25,18 @@ node {
     //options {
     //    buildDiscarder(logRotator(daysToKeepStr: '', numToKeepStr: '5', artifactDaysToKeepStr: '', artifactNumToKeepStr: '5'))
     //}
+    properties([
+        [
+            $class: 'BuildDiscarderProperty',
+            strategy: [
+                $class: 'LogRotator',
+                artifactDaysToKeepStr: '',
+                artifactNumToKeepStr: '', 
+                daysToKeepStr: '',
+                numToKeepStr: '3'
+            ]
+        ]
+    ]);    
     parameters {
         choice(name: 'SOME_CHOICE', choices: ['master', 'master-next', 'v1.0', 'v1.1', 'v1.2'], description: 'Some choice parameter')
     }
