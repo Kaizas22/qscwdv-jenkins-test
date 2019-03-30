@@ -18,14 +18,14 @@ node {
         ]
     ]);    
     parameters {
-        choice(name: 'SOME_CHOICE', choices: ['master', 'master-next', 'v1.0', 'v1.1', 'v1.2'], description: 'Some choice parameter'),
-        choice(name: 'ANOTHER_CHOICE', choices: ['asfjakl-', 'qayedcik'], description: 'Another choice parameter')
+        choice(name: 'BRANCH', choices: ['master', 'master-next', 'v1.0', 'v1.1', 'v1.2'], description: 'Some choice parameter')
+        choice(name: 'TARGET', choices: ['asfjakl-', 'qayedcik'], description: 'Another choice parameter')
     }
     
     stage('Prepare') {
-        def CHOICE1 = branches.chooseBranch(params.SOME_CHOICE)
+        def CHOICE1 = branches.chooseBranch(params.BRANCH)
         echo "first Parameter: ${CHOICE1}"
-        def CHOICE2 = branches.chooseTarget(params.ANOTHER_CHOICE)
+        def CHOICE2 = branches.chooseTarget(params.TARGET)
         echo "second Parameter: ${CHOICE2}"
     }
     
