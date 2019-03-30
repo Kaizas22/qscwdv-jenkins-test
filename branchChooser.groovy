@@ -1,5 +1,5 @@
 def choose_yocto_branch(version) {
-  def result
+  def result = 'v1.0'
   switch (version) {
         case 'master':
             result = 'master'
@@ -13,7 +13,6 @@ def choose_yocto_branch(version) {
             result = 'master-next'
             break
         default:
-            result = 'v1.0'
             break
     }
     return result
