@@ -35,7 +35,7 @@ node {
         checkout scm: [
             $class: 'GitSCM',
             userRemoteConfigs: [[url: "https://github.com/Kaizas22/asfjakl-.git"]],
-            branches: [[name: "${params.BRANCH}"]]
+            branches: [[name: "${params.SOME_CHOICE}"]]
         ]
     }
     stage('Build') {
