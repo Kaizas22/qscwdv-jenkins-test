@@ -23,9 +23,9 @@ node {
     }
     
     stage('Prepare') {
-        def CHOICE1 = branches.chooseBranch(params.BRANCH)
+        def CHOICE1 = branches.chooseBranch(${params.BRANCH})
         echo "first Parameter: ${CHOICE1}"
-        def CHOICE2 = branches.chooseTarget(params.TARGET)
+        def CHOICE2 = branches.chooseTarget(${params.TARGET})
         echo "second Parameter: ${CHOICE2}"
     }
     
