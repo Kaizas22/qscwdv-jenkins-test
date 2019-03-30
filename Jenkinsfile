@@ -16,13 +16,13 @@ node {
                 numToKeepStr: '3'
             ]
         ]
-    ]);
-    
-    versions = ["master","v1.0","v1.1","v1.2"]
-    targets = ["asfjakl-","qayedcik"]
-    parameters ([
-        choice(name: 'BRANCH', choices: versions.join(), description: 'Some choice parameter'),
-        choice(name: 'TARGET', choices: targets.join(), description: 'Another choice parameter')
+        
+        versions = ["master","v1.0","v1.1","v1.2"]
+        targets = ["asfjakl-","qayedcik"]
+        parameters ([
+            choice(name: 'BRANCH', choices: versions.join(), description: 'Some choice parameter'),
+            choice(name: 'TARGET', choices: targets.join(), description: 'Another choice parameter')
+        ])
     ]);
     
     stage('Prepare') {
