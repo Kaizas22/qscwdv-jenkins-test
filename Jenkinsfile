@@ -20,8 +20,8 @@ node {
         versions = ["master","v1.0","v1.1","v1.2"]
         targets = ["asfjakl-","qayedcik"]
         parameters ([
-            choice(name: 'BRANCH', choices: versions.join(), description: 'Some choice parameter'),
-            choice(name: 'TARGET', choices: targets.join(), description: 'Another choice parameter')
+            choice(name: 'BRANCH', choices: versions.join("\n"), description: 'Some choice parameter'),
+            choice(name: 'TARGET', choices: targets.join("\n"), description: 'Another choice parameter')
         ])
     ]);
     
