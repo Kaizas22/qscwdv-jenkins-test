@@ -19,11 +19,13 @@ node {
         choice(name: 'SOME_CHOICE', choices: ['master', 'master-next', 'v1.0', 'v1.1', 'v1.2'], description: 'Some choice parameter')
     }
     
-    def chosenOne = branches.choose_yocto_branch(params.SOME_CHOICE)
-    echo "${chosenOne}"
+    stage('Prepare') {
+        checkout scm
+        def chosenOne = branches.choose_yocto_branch(params.SOME_CHOICE)
+        echo "${chosenOne}"
+    }
     
     stage('Checkout') {
-        checkout scm
         checkout scm: [
             $class: 'GitSCM',
             userRemoteConfigs: [[url: "https://github.com/Kaizas22/asfjakl-.git"]],
