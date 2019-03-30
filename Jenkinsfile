@@ -1,4 +1,6 @@
 node {
+    checkout scm
+    
     def rootDir = pwd()
     def branches = load "${rootDir}@script/branchChooser.groovy "
     
@@ -20,7 +22,6 @@ node {
     }
     
     stage('Prepare') {
-        checkout scm
         def chosenOne = branches.choose_yocto_branch(params.SOME_CHOICE)
         echo "${chosenOne}"
     }
