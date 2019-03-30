@@ -1,6 +1,6 @@
-def choose_yocto_branch(version) {
-  def result = 'v1.0'
-  switch (version) {
+def chooseBranch(version) {
+    def result
+    switch (version) {
         case 'master':
             result = 'master'
             break
@@ -13,8 +13,22 @@ def choose_yocto_branch(version) {
             result = 'master-next'
             break
         default:
+            result = 'v1.0'
             break
     }
     return result
-  }
+}
+
+def chooseTarget(target) {
+    def result
+    switch (target) {
+        case 'qayedcik':
+            result = 'qayedcik'
+            break
+        default:
+            result = 'asfjakl-'
+    }
+    return result
+}
+
 return this
