@@ -1,4 +1,3 @@
-class Example {
   def choose_yocto_branch(version) {
     def result
     switch (version) {
@@ -19,4 +18,3 @@ class Example {
     }
     return this
   }
-}
