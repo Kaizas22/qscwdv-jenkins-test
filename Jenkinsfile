@@ -18,7 +18,8 @@ node {
     parameters {
         choice(name: 'SOME_CHOICE', choices: ['master', 'master-next', 'v1.0', 'v1.1', 'v1.2'], description: 'Some choice parameter')
     }
-    def chosenOne = choose_yocto_branch(params.SOME_CHOICE)
+    branches = new branchChooser()
+    def chosenOne = branches.choose_yocto_branch(params.SOME_CHOICE)
     echo "${chosenOne}"
     
     stage('Checkout') {
