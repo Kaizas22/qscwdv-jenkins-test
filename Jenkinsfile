@@ -2,7 +2,7 @@ node {
     checkout scm
     
     def rootDir = pwd()
-    def branches = load "${rootDir}/branchChooser.groovy "
+    def branches = load "${rootDir}/branchChooser.groovy"
     
     //liste = ["master","v1.0","v1.1","v1.2"]
     properties([
