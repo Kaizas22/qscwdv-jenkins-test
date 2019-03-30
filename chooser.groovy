@@ -13,7 +13,7 @@ def chooseBranch(version) {
             result = 'master-next'
             break
         default:
-            result = 'v1.0'
+            result = 'master'
             break
     }
     return result
