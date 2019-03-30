@@ -19,7 +19,7 @@ node {
     ]);    
     parameters {
         choice(name: 'BRANCH', choices: ['master', 'master-next', 'v1.0', 'v1.1', 'v1.2'], description: 'Some choice parameter')
-        choice(name: 'TARGET', choices: ['asfjakl-', 'qayedcik'], description: 'Another choice parameter')
+        //choice(name: 'TARGET', choices: ['asfjakl-', 'qayedcik'], description: 'Another choice parameter')
     }
     
     stage('Prepare') {
@@ -35,7 +35,7 @@ node {
         //checkout scm: [
         //    $class: 'GitSCM',
         //    userRemoteConfigs: [[url: "https://github.com/Kaizas22/asfjakl-.git"]],
-        //    branches: [[name: "${params.SOME_CHOICE}"]]
+        //    branches: [[name: "${params.BRANCH}"]]
         //]
     }
     stage('Build') {
