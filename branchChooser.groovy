@@ -17,3 +17,4 @@ def choose_yocto_branch(version) {
     }
     return result
   }
+return this
