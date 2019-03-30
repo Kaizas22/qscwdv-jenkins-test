@@ -1,6 +1,6 @@
-import branchChooser.groovy
-
 node {
+    def rootDir = pwd()
+    def branches = load "${rootDir}@script/branchChooser.groovy "
     
     //liste = ["master","v1.0","v1.1","v1.2"]
     properties([
@@ -18,7 +18,7 @@ node {
     parameters {
         choice(name: 'SOME_CHOICE', choices: ['master', 'master-next', 'v1.0', 'v1.1', 'v1.2'], description: 'Some choice parameter')
     }
-    branches = new branchChooser()
+    
     def chosenOne = branches.choose_yocto_branch(params.SOME_CHOICE)
     echo "${chosenOne}"
     
