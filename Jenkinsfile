@@ -9,9 +9,6 @@ node {
             //choice(name: 'BRANCH', choices: versions.join("\n"), description: 'Some choice parameter'),
         //choice(name: 'TARGET', choices: targets.join("\n"), description: 'Another choice parameter')
     properties([
-        parameters([
-            string(name: 'DEPLOY_ENV', defaultValue: 'TESTING', description: 'The target environment', )
-        ])
         [
             $class: 'BuildDiscarderProperty',
             strategy: [
