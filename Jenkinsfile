@@ -6,7 +6,8 @@ node {
     
     versions = ["master","v1.0","v1.1","v1.2"]
     targets = ["asfjakl-","qayedcik"]
-    
+            //choice(name: 'BRANCH', choices: versions.join("\n"), description: 'Some choice parameter'),
+        //choice(name: 'TARGET', choices: targets.join("\n"), description: 'Another choice parameter')
     properties([
         parameters([
             string(name: 'DEPLOY_ENV', defaultValue: 'TESTING', description: 'The target environment', )
@@ -21,9 +22,6 @@ node {
                 numToKeepStr: '3'
             ]
         ]
-        
-        //choice(name: 'BRANCH', choices: versions.join("\n"), description: 'Some choice parameter'),
-        //choice(name: 'TARGET', choices: targets.join("\n"), description: 'Another choice parameter')
     ]);
     
     stage('Prepare') {
