@@ -18,10 +18,10 @@ node {
             ]
         ]
     ]);
-    parameters([
+    parameters {
         choice(name: 'BRANCH', choices: versions.join("\n"), description: 'Some choice parameter'),
         choice(name: 'TARGET', choices: targets.join("\n"), description: 'Another choice parameter')
-    ]);
+    }
     
     stage('Prepare') {
         echo "first Parameter: ${params.SOME_CHOICE}"
