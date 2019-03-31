@@ -4,7 +4,9 @@ node {
     def rootDir = pwd()
     def branches = load "${rootDir}/chooser.groovy"
     
-    //
+    versions = ["master","v1.0","v1.1","v1.2"]
+    targets = ["asfjakl-","qayedcik"]
+    
     properties([
         [
             $class: 'BuildDiscarderProperty',
@@ -17,8 +19,6 @@ node {
             ]
         ]
         
-        versions = ["master","v1.0","v1.1","v1.2"]
-        targets = ["asfjakl-","qayedcik"]
         parameters ([
             choice(name: 'BRANCH', choices: versions.join("\n"), description: 'Some choice parameter'),
             choice(name: 'TARGET', choices: targets.join("\n"), description: 'Another choice parameter')
