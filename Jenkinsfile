@@ -24,6 +24,8 @@ node {
     checkout scm
     def rootDir = pwd()
     
+    currentBuild.description = "#${BUILD_NUMBER}, branch ${BRANCH}"
+    
     stage('Prepare') {
         // include groovy file to choose something
         def branches = load "${rootDir}/chooser.groovy"
