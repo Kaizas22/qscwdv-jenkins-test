@@ -20,14 +20,14 @@ node {
         ])
     ]);
 
+    // checkout repository with Jenkinsfile
+    checkout scm
+    def rootDir = pwd()
     
     stage('Prepare') {
-        // checkout repository with Jenkinsfile
-        checkout scm
-        def rootDir = pwd()
-        
         // include additional groovy files
         def branches = load "${rootDir}/chooser.groovy"
+        def repository = load "${rootDir}/repository.groovy"
         
         def BRANCH = branches.chooseBranch(params.BRANCH)
         echo "first Parameter: ${BRANCH}"
@@ -36,11 +36,12 @@ node {
     }
     
     stage('Checkout') {
-        checkout scm: [
-            $class: 'GitSCM',
-            userRemoteConfigs: [[url: "https://github.com/Kaizas22/${TARGET}.git"]],
-            branches: [[name: "${BRANCH}"]]
-        ]
+        def REPO = repository.checkout(${TARGET})
+        //checkout scm: [
+        //    $class: 'GitSCM',
+        //    userRemoteConfigs: [[url: "https://github.com/Kaizas22/${TARGET}.git"]],
+        //    branches: [[name: "${BRANCH}"]]
+        //]
     }
     stage('Build') {
         echo 'Building..'
