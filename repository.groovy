@@ -21,7 +21,7 @@ def checkoutSvn(branch) {
     if (svnRepository [-1] != "/") {
         svnRepository = ${svnRepository} + "/"
     }
-    echo "${svnRepository}"
+    echo svnRepository
 }
 
 return this
