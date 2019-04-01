@@ -40,8 +40,8 @@ node {
     stage('Checkout') {
         // include groovy file to checkout git repositories
         def repository = load "${rootDir}/repository.groovy"
-        def REPO = repository.checkoutGit(TARGET, BRANCH)
-        REPO = repository.checkoutSvn(BRANCH)
+        repository.checkoutGit(TARGET, BRANCH)
+        repository.checkoutSvn(BRANCH)
     }
     stage('Build') {
         echo 'Building..'
