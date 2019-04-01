@@ -37,7 +37,7 @@ node {
     
     stage('Checkout') {
         def repository = load "${rootDir}/repository.groovy"
-        def REPO = repository.checkout(${TARGET})
+        def REPO = repository.checkout(TARGET)
         //checkout scm: [
         //    $class: 'GitSCM',
         //    userRemoteConfigs: [[url: "https://github.com/Kaizas22/${TARGET}.git"]],
