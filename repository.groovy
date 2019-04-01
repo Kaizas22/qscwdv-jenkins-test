@@ -1,9 +1,11 @@
 REPO_URL = "https://github.com/Kaizas22/"
 
 def checkout(repository) {
+    def repos = "${REPO_URL}" + "${repository}" + ".git"
+    
     checkout scm: [
         $class: 'GitSCM',
-        userRemoteConfigs: [[url: "${REPO_URL}" + "${repository}" + ".git"]],
+        userRemoteConfigs: [[url: "${repos}"]],
         branches: [[name: "${BRANCH}"]]
     ]
 }
