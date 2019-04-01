@@ -27,7 +27,7 @@ node {
     stage('Prepare') {
         // include additional groovy files
         def branches = load "${rootDir}/chooser.groovy"
-        def repository = load "${rootDir}/repository.groovy"
+
         
         def BRANCH = branches.chooseBranch(params.BRANCH)
         echo "first Parameter: ${BRANCH}"
@@ -36,6 +36,7 @@ node {
     }
     
     stage('Checkout') {
+        def repository = load "${rootDir}/repository.groovy"
         def REPO = repository.checkout(${TARGET})
         //checkout scm: [
         //    $class: 'GitSCM',
