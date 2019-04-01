@@ -1,4 +1,4 @@
-def REPO_URL = "https://github.com/Kaizas22/"
+REPO_URL = "https://github.com/Kaizas22/"
 
 def checkout(repository) {
     echo "${REPO_URL}${repository}.git"
