@@ -1,8 +1,4 @@
 node {
-    checkout scm
-    
-    def rootDir = pwd()
-    def branches = load "${rootDir}/chooser.groovy"
     
     versions = ["master","v1.0","v1.1","v1.2"]
     targets = ["asfjakl-","qayedcik"]
@@ -24,6 +20,10 @@ node {
     }
     
     stage('Prepare') {
+        checkout scm
+    
+        def rootDir = pwd()
+        def branches = load "${rootDir}/chooser.groovy"
         echo "first Parameter: ${params.SOME_CHOICE}"
         def CHOICE1 = branches.chooseBranch(params.BRANCH)
         echo "first Parameter: ${CHOICE1}"
