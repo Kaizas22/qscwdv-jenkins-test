@@ -5,11 +5,11 @@ def checkoutRepo(repository, branch) {
     
     dir("repository")
     echo pwd()
-    checkout scm: [
-        $class: 'GitSCM',
-        userRemoteConfigs: [[url: "${repos}"]],
-        branches: [[name: "${branch}"]]
-    ]
+    //checkout scm: [
+    //    $class: 'GitSCM',
+    //    userRemoteConfigs: [[url: "${repos}"]],
+    //    branches: [[name: "${branch}"]]
+    //]
     dir("..")
     echo pwd()
 }
