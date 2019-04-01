@@ -9,9 +9,9 @@ node {
             strategy: [
                 $class: 'LogRotator',
                 artifactDaysToKeepStr: '',
-                artifactNumToKeepStr: '', 
+                artifactNumToKeepStr: '5', 
                 daysToKeepStr: '',
-                numToKeepStr: '3'
+                numToKeepStr: '5'
             ]
         ],
         parameters ([
