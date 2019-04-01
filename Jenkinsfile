@@ -30,7 +30,7 @@ node {
     stage('Prepare') {
         echo 'Prepare..'
         // include groovy file to choose something
-        def branches = load "${rootDir}/chooser.groovy"
+        def branches = load "${rootDir}/groovy/chooser.groovy"
 
         def BRANCH = branches.chooseBranch(params.BRANCH)
         def TARGET = branches.chooseTarget(params.TARGET)
@@ -38,7 +38,7 @@ node {
     
     stage('Checkout') {
         // include groovy file to checkout repositories
-        def repository = load "${rootDir}/repository.groovy"
+        def repository = load "${rootDir}/groovy/repository.groovy"
         repository.checkoutGit(TARGET, BRANCH)
         repository.checkoutSvn(BRANCH)
     }
