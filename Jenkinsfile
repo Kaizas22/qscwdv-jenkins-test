@@ -1,4 +1,5 @@
-node { 
+node {
+    
     def versions = ["master","v1.0","v1.1","v1.2"]
     def targets = ["asfjakl-","qayedcik"]
     
