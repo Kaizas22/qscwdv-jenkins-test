@@ -4,7 +4,7 @@ def checkoutRepo(repository, branch) {
     def repos = "${REPO_URL}" + "${repository}" + ".git"
     
     dir("${repository}") {
-        deleteDir
+        deleteDir()
         checkout scm: [
             $class: 'GitSCM',
             userRemoteConfigs: [[url: "${repos}"]],
