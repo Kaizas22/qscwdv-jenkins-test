@@ -10,6 +10,8 @@ def checkoutRepo(repository) {
         userRemoteConfigs: [[url: "${repos}"]],
         branches: [[name: "${BRANCH}"]]
     ]
+    dir("..")
+    echo pwd()
 }
 
 return this
