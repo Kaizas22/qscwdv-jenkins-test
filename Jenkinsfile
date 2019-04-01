@@ -36,11 +36,11 @@ node {
     }
     
     stage('Checkout') {
-        //checkout scm: [
-        //    $class: 'GitSCM',
-        //    userRemoteConfigs: [[url: "https://github.com/Kaizas22/${TARGET}.git"]],
-        //    branches: [[name: "${BRANCH}"]]
-        //]
+        checkout scm: [
+            $class: 'GitSCM',
+            userRemoteConfigs: [[url: "https://github.com/Kaizas22/${TARGET}.git"]],
+            branches: [[name: "${BRANCH}"]]
+        ]
     }
     stage('Build') {
         echo 'Building..'
