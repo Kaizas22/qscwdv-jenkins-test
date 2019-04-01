@@ -44,6 +44,7 @@ node {
     }
     stage('Build') {
         echo 'Building..'
+        sh "bash/versionChooser.sh"
     }
     stage('Test') {
         echo 'Testing..'
