@@ -15,7 +15,7 @@ def checkoutGit(repository, branch) {
 }
 
 def checkoutSvn(branch) {
-    def svnRepository = "${SVN_URL}" + "${branch}
+    def svnRepository = "${SVN_URL}" + "${branch}"
     
     echo "${svnRepository}"
     if (svnRepository [-1] != "/") {
