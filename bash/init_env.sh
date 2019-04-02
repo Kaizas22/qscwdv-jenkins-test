@@ -1,6 +1,6 @@
 #!/bin/bash
 
-
+source config/env_config
 
 SVN_REV=$1
 
