@@ -40,10 +40,10 @@ def checkoutSvn(branch) {
         quietOperation: true,
         workspaceUpdater: [
             $class: 'UpdateUpdater'
-        ])
-        version = svnData.SVN_REVISION
-   }
-   return version
+        ]
+    ])
+    version = svnData.SVN_REVISION
+    return version
 }
 
 return this
