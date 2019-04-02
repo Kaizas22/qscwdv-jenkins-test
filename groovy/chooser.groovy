@@ -22,11 +22,20 @@ def chooseBranch(version) {
 def chooseTarget(target) {
     def result
     switch (target) {
-        case 'qayedcik':
-            result = 'qayedcik'
+        case 'A':
+            result = 'A'
             break
+        case 'B':
+            result = 'B'
+            break
+        case 'C':
+            result = 'C'
+            break
+        case 'D':
+            result = 'D'
+            break        
         default:
-            result = 'asfjakl-'
+            result = 'E'
     }
     return result
 }
