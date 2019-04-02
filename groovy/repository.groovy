@@ -17,11 +17,33 @@ def checkoutGit(repository, branch) {
 def checkoutSvn(branch) {
     def svnRepository = "${SVN_URL}" + "${branch}"
     
-    echo svnRepository
     if (svnRepository [-1] != "/") {
         svnRepository = "${svnRepository}" + "/"
     }
-    echo svnRepository
+    def svnData = checkout ([
+        $class: 'SubversionSCM',
+        additionalCredentials: [],
+        excludedCommitMessages: '',
+        excludedRegions: '',
+        excludedRevprop: '',
+        excludedUsers: '',
+        filterChangelog: false,
+        ignoreDirPropChanges: false,
+        includeRegions: '',
+        locations: [[
+            credentialsId: '...',
+            depthOption: 'empty',
+            ignoreExternalOption: true,
+            local: 'testdir',
+            remote: svnRepository
+        ]]
+        quietOperation: true,
+        workspaceUpdater: [
+            $class: 'UpdateUpdater'
+        ]
+        version = svnData.SVN_REVISION
+   }
+   return version
 }
 
 return this
