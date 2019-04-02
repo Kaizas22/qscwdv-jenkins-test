@@ -33,8 +33,8 @@ node {
         // include groovy file to choose something
         def branches = load "${rootDir}/groovy/chooser.groovy"
 
-        def BRANCH = branches.chooseBranch(params.VERSION)
-        def TARGET = branches.chooseTarget(params.TARGET)
+        BRANCH = branches.chooseBranch(params.VERSION)
+        TARGET = branches.chooseTarget(params.TARGET)
     }
     
     stage('Checkout') {
