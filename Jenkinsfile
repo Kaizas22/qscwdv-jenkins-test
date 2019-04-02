@@ -25,9 +25,6 @@ node {
     checkout scm
     def rootDir = pwd()
     
-    currentBuild.displayName = "#${BUILD_NUMBER}, branch ${VERSION}"
-    currentBuild.description = "Hello World"
-    
     stage('Prepare') {
         echo 'Prepare..'
         // include groovy file to choose something
@@ -35,6 +32,8 @@ node {
 
         BRANCH = branches.chooseBranch(params.VERSION)
         TARGET = branches.chooseTarget(params.TARGET)
+        
+        currentBuild.description = "For Target ${TARGET}"
     }
     
     stage('Checkout') {
@@ -74,4 +73,5 @@ node {
             ]]
         )*/    
     }
+    currentBuild.displayName = "#${BUILD_NUMBER}, branch ${VERSION}"
 }
