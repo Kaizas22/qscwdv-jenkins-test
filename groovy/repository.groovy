@@ -36,7 +36,7 @@ def checkoutSvn(branch) {
             ignoreExternalOption: true,
             local: 'testdir',
             remote: ${svnRepository}
-        ]]
+        ]],
         quietOperation: true,
         workspaceUpdater: [
             $class: 'UpdateUpdater'
