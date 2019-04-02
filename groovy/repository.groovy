@@ -36,14 +36,14 @@ def checkoutSvn(branch) {
             ignoreExternalOption: true,
             local: 'testdir',
             remote: ${svnRepository}
-        ]]
+        ]],
         quietOperation: true,
         workspaceUpdater: [
             $class: 'UpdateUpdater'
         ]
-        version = svnData.SVN_REVISION
-   }
-   return version
+    ])
+    version = svnData.SVN_REVISION
+    return version
 }
 
 return this
