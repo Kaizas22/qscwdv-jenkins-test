@@ -25,7 +25,7 @@ node {
     checkout scm
     def rootDir = pwd()
     
-    currentBuild.displayName = "#${BUILD_NUMBER}, branch ${BRANCH}"
+    currentBuild.displayName = "#${BUILD_NUMBER}, branch ${VERSION}"
     currentBuild.description = "Hello World"
     
     stage('Prepare') {
