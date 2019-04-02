@@ -3,6 +3,7 @@
 source bash/config/env_config
 
 SVN_REV=$1
+MACHINE=$2
 
 echo "svn: "${SVN_REV}
 
@@ -24,5 +25,5 @@ fi
 touch local.conf.template
 
 cat ${startpwd}/config/local.conf >> local.conf.template
-sed -i "s:MACHINE\ \=.*:MACHINE\ \=\ \"TEST\":g" local.conf.template
+sed -i "s:MACHINE\ \=.*:MACHINE\ \=\ \"${MACHINE}\":g" local.conf.template
 cp local.conf.template local.conf
