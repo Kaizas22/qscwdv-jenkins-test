@@ -51,5 +51,26 @@ node {
     }
     stage('Deploy') {
         echo 'Deploying....'
+        archiveArtifacts '...'
+        cifsPublisher (
+            publishers: [[
+                configName: '...',
+                transfers: [[
+                    cleanRemote: false,
+                    excludes: '',
+                    flatten: false,
+                    makeEmptyDirs: false,
+                    noDefaultExcludes: false,
+                    patternSeparator: '[, ]+',
+                    remoteDirectory: '...',
+                    remoteDirectorySDF: false,
+                    removePrefix: '...',
+                    sourceFiles: '...'
+                ]],
+                usePromotionTimestamp: false,
+                useWorkspaceInPromotion: false,
+                verbose: false
+            ]]
+        )    
     }
 }
