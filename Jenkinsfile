@@ -44,7 +44,7 @@ node {
     }
     stage('Build') {
         echo 'Building..'
-        sh "bash/init_env.sh "" ${TARGET}"
+        sh "bash/init_env.sh 12345 ${TARGET}"
     }
     stage('Test') {
         echo 'Testing..'
