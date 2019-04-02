@@ -1,6 +1,6 @@
 node {
     
-    def versions = ["master","v1.0","v1.1","v1.2"]
+    def gitVersions = ["master","v1.0","v1.1","v1.2"]
     def targets = ["A","B","C","D","E"]
     
     properties([
@@ -15,7 +15,8 @@ node {
             ]
         ],
         parameters ([
-            choice(name: 'BRANCH', choices: versions.join("\n"), description: 'Some choice parameter'),
+            string(name: 'SVN', defaultValue: "TEST/", description: 'What SVN?'),
+            choice(name: 'VERSION', choices: versions.join("\n"), description: 'Some choice parameter'),
             choice(name: 'TARGET', choices: targets.join("\n"), description: 'Another choice parameter')
         ])
     ]);
@@ -32,7 +33,7 @@ node {
         // include groovy file to choose something
         def branches = load "${rootDir}/groovy/chooser.groovy"
 
-        def BRANCH = branches.chooseBranch(params.BRANCH)
+        def BRANCH = branches.chooseBranch(params.VERSION)
         def TARGET = branches.chooseTarget(params.TARGET)
     }
     
