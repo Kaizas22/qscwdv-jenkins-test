@@ -1,7 +1,7 @@
 node {
     
-    def gitVersions = ["master","v1.0","v1.1","v1.2"]
-    def targets = ["A","B","C","D","E"]
+    def VERSIONS = ["master","v1.0","v1.1","v1.2"]
+    def TARGETS = ["A","B","C","D","E"]
     
     properties([
         [
@@ -16,8 +16,8 @@ node {
         ],
         parameters ([
             string(name: 'SVN', defaultValue: "TEST/", description: 'What SVN?'),
-            choice(name: 'VERSION', choices: versions.join("\n"), description: 'Some choice parameter'),
-            choice(name: 'TARGET', choices: targets.join("\n"), description: 'Another choice parameter')
+            choice(name: 'VERSION', choices: VERSIONS.join("\n"), description: 'Some choice parameter'),
+            choice(name: 'TARGET', choices: TARGETS.join("\n"), description: 'Another choice parameter')
         ])
     ]);
 
