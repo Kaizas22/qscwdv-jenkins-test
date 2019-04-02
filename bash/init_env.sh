@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/bash
 
 #source config/env_config
 
