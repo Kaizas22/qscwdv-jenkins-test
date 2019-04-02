@@ -35,7 +35,7 @@ def checkoutSvn(branch) {
             depthOption: 'empty',
             ignoreExternalOption: true,
             local: 'testdir',
-            remote: svnRepository
+            remote: ${svnRepository}
         ]]
         quietOperation: true,
         workspaceUpdater: [
