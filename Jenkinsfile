@@ -1,7 +1,7 @@
 node {
     
     def versions = ["master","v1.0","v1.1","v1.2"]
-    def targets = ["asfjakl-","qayedcik"]
+    def targets = ["A","B","C","D","E"]
     
     properties([
         [
@@ -39,7 +39,7 @@ node {
     stage('Checkout') {
         // include groovy file to checkout repositories
         def repository = load "${rootDir}/groovy/repository.groovy"
-        repository.checkoutGit(TARGET, BRANCH)
+        repository.checkoutGit("asfjakl-", BRANCH)
         //repository.checkoutSvn(BRANCH)
     }
     stage('Build') {
@@ -51,7 +51,7 @@ node {
     }
     stage('Deploy') {
         echo 'Deploying....'
-        archiveArtifacts '...'
+        /*archiveArtifacts '...'
         cifsPublisher (
             publishers: [[
                 configName: '...',
@@ -71,6 +71,6 @@ node {
                 useWorkspaceInPromotion: false,
                 verbose: false
             ]]
-        )    
+        )*/    
     }
 }
