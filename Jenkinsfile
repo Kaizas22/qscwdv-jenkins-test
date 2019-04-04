@@ -31,7 +31,7 @@ node {
         def branches = load "${rootDir}/groovy/chooser.groovy"
 
         branches.chooseBranch(params.VERSION)
-        echo "${branch.getBranch()}"
+        echo "${branches.getBranch()}"
         branches.chooseTarget(params.TARGET)
         echo "${branches.getTarget()}"
         
