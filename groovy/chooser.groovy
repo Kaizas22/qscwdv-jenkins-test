@@ -1,7 +1,7 @@
 def version
 def target
 
-def A_VERSIONS = ["master","1.0","1.1","1.2","2.0","2.1"]
+A_VERSIONS = ["master","1.0","1.1","1.2","2.0","2.1"]
 def B_VERSIONS = ["master","1.0","1.1","1.2"]
 def C_VERSIONS = ["master","1.0","1.1"]
 def D_VERSIONS = ["master","1.0"]
