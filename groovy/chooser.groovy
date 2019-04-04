@@ -54,7 +54,7 @@ def chooseLinuxVersion(v) {
 
 def sanityCheck(t,v) {
     echo "${t} : ${v}"
-    assert ['a','b','c'].contains('a')
+    assert ["master",'1.0','1.1'].contains(v)
     //assert A_VERSIONS.contains(${v})
     echo "true"
 }
