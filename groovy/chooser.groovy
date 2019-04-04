@@ -50,9 +50,10 @@ def chooseLinuxVersion(version) {
         default:
             this.version = 'master'
     }
+    this.checkTargetVersion(target,version)
 }
 
-checkTargetVersion(target,version) {
+def checkTargetVersion(target,version) {
     echo "${target}: ${version}"
 }
 
