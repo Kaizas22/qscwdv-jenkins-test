@@ -1,6 +1,6 @@
 node {
     
-    def VERSIONS = ["master","v1.0","v1.1","v1.2"]
+    def VERSIONS = ["master","v1.0","v1.1","v1.2","2.0","2.1"]
     def TARGETS = ["A","B","C","D","E"]
     
     properties([
