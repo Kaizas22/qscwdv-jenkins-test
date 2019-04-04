@@ -35,22 +35,22 @@ node {
         chooser.chooseLinuxVersion(params.LINUX_VERSION) 
         chooser.chooseTarget(params.TARGET)
 
-        target = chooser.getTarget()
         version = chooser.getVersion()
-        echo "Jenkins says: ${target}, ${version}"
+        target = chooser.getTarget()
         
         currentBuild.description = "For Target ${target}"
     }
     
     stage('Checkout') {
         // include groovy file to checkout repositories
-        //def repository = load "${rootDir}/groovy/repository.groovy"
-        //repository.checkoutGit("asfjakl-", version)
+        def repository = load "${rootDir}/groovy/repository.groovy"
+        
+        repository.checkoutGit("asfjakl-", version)
         //repository.checkoutSvn(params.SVN)
     }
     stage('Build') {
         echo 'Building..'
-        //sh "bash/init_env.sh 12345 ${TARGET}"
+        sh "bash/init_env.sh 12345 ${TARGET}"
     }
     stage('Test') {
         echo 'Testing..'
