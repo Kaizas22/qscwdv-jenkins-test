@@ -4,7 +4,7 @@ def target
 def chooseBranch(version) {
     switch (version) {
         case 'v1.0':
-            version = '1.0'
+            this.version = '1.0'
             break
         case 'v1.1':
             version = '1.1'
