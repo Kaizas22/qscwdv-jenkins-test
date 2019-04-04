@@ -1,43 +1,54 @@
+def branch
+def target
+
 def chooseBranch(version) {
-    def result
     switch (version) {
-        case 'master':
-            result = 'master'
-            break
-        case 'master-next':
-        case 'v1.2':
-            result = 'v1.2'
-            break
         case 'v1.0':
+            branch = 'v1.0'
+            break
         case 'v1.1':
-            result = 'master-next'
+            branch = 'v1.1'
+            break
+        case 'v1.2':
+            branch = 'v1.2'
+            break
+        case 'v2.0':
+            branch = 'v2.0'
+            break
+        case 'v2.1':
+            branch = 'v2.1'
             break
         default:
-            result = 'master'
+            branch = 'master'
             break
     }
-    return result
 }
 
-def chooseTarget(target) {
-    def result
-    switch (target) {
+def getBranch() {
+    return branch
+}
+
+def chooseTarget(device) {
+    switch (device) {
         case 'A':
-            result = 'A'
+            target = 'A'
             break
         case 'B':
-            result = 'B'
+            target = 'B'
             break
         case 'C':
-            result = 'C'
+            target = 'C'
             break
         case 'D':
-            result = 'D'
+            target = 'D'
             break        
         default:
-            result = 'E'
+            target = 'E'
     }
-    return result
+}
+
+def getTarget() {
+    return target
 }
 
 return this
