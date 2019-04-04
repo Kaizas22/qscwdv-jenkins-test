@@ -32,30 +32,31 @@ def getTarget() {
 
 def chooseLinuxVersion(v) {
     switch (v) {
-        case '1.0':
-            version = 'v1.0'
+        case "1.0":
+            version = "v1.0"
             break
-        case '1.1':
-            version = 'v1.1'
+        case "1.1":
+            version = "v1.1"
             break
-        case '1.2':
-            version = 'v1.2'
+        case "1.2":
+            version = "v1.2"
             break
-        case '2.0':
-            version = 'v2.0'
+        case "2.0":
+            version = "v2.0"
             break
-        case '2.1':
-            version = 'v2.1'
+        case "2.1":
+            version = "v2.1"
             break
         default:
-            version = 'master'
+            version = "master"
     }
 }
 
 def sanityCheck(t,v) {
     echo "${t} : ${v}"
-    if (!['master','1.0','1.1'].contains(v)) {
-        version = 'master'
+    echo "Local: ${A_VERSIONS}"
+    if !(["master","1.0","1.1"].contains(v)) {
+        version = "master"
     }
 }
 
