@@ -2,10 +2,10 @@ def version
 def target
 
 A_VERSIONS = ["master","1.0","1.1","1.2","2.0","2.1"]
-def B_VERSIONS = ["master","1.0","1.1","1.2"]
-def C_VERSIONS = ["master","1.0","1.1"]
-def D_VERSIONS = ["master","1.0"]
-def E_VERSIONS = ["master"]
+B_VERSIONS = ["master","1.0","1.1","1.2"]
+C_VERSIONS = ["master","1.0","1.1"]
+D_VERSIONS = ["master","1.0"]
+E_VERSIONS = ["master"]
 
 def chooseTarget(t) {
     switch (t) {
@@ -55,7 +55,7 @@ def chooseLinuxVersion(v) {
 def sanityCheck(t,v) {
     echo "${t} : ${v}"
     echo "Local: ${A_VERSIONS}"
-    if (!["master","1.0","1.1"].contains(v)) {
+    if (!A_VERSIONS.contains(v)) {
         version = "master"
     }
 }
