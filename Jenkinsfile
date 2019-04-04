@@ -38,10 +38,6 @@ node {
         target = chooser.getTarget()
         version = chooser.getVersion()
         echo "Jenkins says: ${target}, ${version}"
-        chooser.sanityCheck(target, version)
-        target = chooser.getTarget()
-        version = chooser.getVersion()
-        echo "Now Jenkins says: ${target}, ${version}"
         
         currentBuild.description = "For Target ${target}"
     }
