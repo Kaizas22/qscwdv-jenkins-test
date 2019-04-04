@@ -50,12 +50,11 @@ def chooseLinuxVersion(v) {
         default:
             version = 'master'
     }
-    //this.checkTargetVersion(target,version)
 }
 
-def checkTargetVersion(target,version) {
-    echo "${this.getTarget()} : ${this.getVersion()}"
-    assert this.A_VERSIONS.contains(this.getVersion())
+def sanityCheck(t,v) {
+    echo "${t} : ${v}"
+    assert A_VERSIONS.contains(${v})
     echo "true"
 }
 
