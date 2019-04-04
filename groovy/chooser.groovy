@@ -3,23 +3,23 @@ def target
 
 def chooseBranch(version) {
     switch (version) {
-        case 'v1.0':
-            this.version = '1.0'
+        case '1.0':
+            this.version = 'v1.0'
             break
-        case 'v1.1':
-            version = '1.1'
+        case '1.1':
+            this.version = 'v1.1'
             break
-        case 'v1.2':
-            version = '1.2'
+        case '1.2':
+            this.version = 'v1.2'
             break
-        case 'v2.0':
-            version = '2.0'
+        case '2.0':
+            this.version = 'v2.0'
             break
-        case 'v2.1':
-            version = '2.1'
+        case '2.1':
+            this.version = 'v2.1'
             break
         default:
-            version = 'master'
+            this.version = 'master'
             break
     }
 }
@@ -28,22 +28,22 @@ def getBranch() {
     return version
 }
 
-def chooseTarget(device) {
-    switch (device) {
+def chooseTarget(target) {
+    switch (target) {
         case 'A':
-            target = 'A'
+            this.target = 'A'
             break
         case 'B':
-            target = 'B'
+            this.target = 'B'
             break
         case 'C':
-            target = 'C'
+            this.target = 'C'
             break
         case 'D':
-            target = 'D'
+            this.target = 'D'
             break        
         default:
-            target = 'E'
+            this.target = 'E'
     }
 }
 
