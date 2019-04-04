@@ -17,9 +17,11 @@ node {
             ]
         ],
         parameters ([
-            choice(name: 'TARGET', choices: TARGETS.join("\n"), description: 'Choose your target.'),
-            choice(name: 'LINUX_VERSION', choices: VERSIONS.join("\n"), description: 'Choose the linux version.'),
-            string(name: 'SVN', defaultValue: "TEST/", description: 'Which SVN branch should be used?')
+            choice(name: "TARGET", choices: TARGETS.join("\n"), description: "Choose your target."),
+            choice(name: "LINUX_VERSION", choices: VERSIONS.join("\n"), description: "Choose the linux version."),
+            string(name: "SVN", defaultValue: "TEST/", description: "Which SVN branch should be used?"),
+            boolean(name: "BUILD_SDK", defaultValue: false, description: "Should a SDK be built?"),
+            boolean(name: "BUILD_KERNEL_SDK", defaultValue: false, description: "Should a kernel SDK be built?")
         ])
     ]);
 
