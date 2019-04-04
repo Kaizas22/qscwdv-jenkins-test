@@ -32,8 +32,9 @@ node {
         // include groovy file to choose 
         def chooser = load "${rootDir}/groovy/chooser.groovy"
 
+        chooser.chooseLinuxVersion(params.LINUX_VERSION) 
         chooser.chooseTarget(params.TARGET)
-        chooser.chooseLinuxVersion(params.LINUX_VERSION)
+
         target = chooser.getTarget()
         version = chooser.getVersion()
         echo "Jenkins says: ${target}, ${version}"
