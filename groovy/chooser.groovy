@@ -33,10 +33,10 @@ def getTarget() {
 def chooseLinuxVersion(version) {
     switch (version) {
         case '1.0':
-            this.version = 'v1.0'
+            version = 'v1.0'
             break
         case '1.1':
-            this.version = 'v1.1'
+            version = 'v1.1'
             break
         case '1.2':
             this.version = 'v1.2'
