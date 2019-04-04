@@ -36,6 +36,7 @@ node {
         target = chooser.getTarget()
         chooser.chooseLinuxVersion(params.VERSION)
         version = chooser.getVersion()
+        echo "Jenkins says: ${target}, ${version}"
         
         currentBuild.description = "For Target ${target}"
     }
