@@ -55,7 +55,7 @@ def chooseLinuxVersion(v) {
 def sanityCheck(t,v) {
     echo "${t} : ${v}"
     echo "Local: ${A_VERSIONS}"
-    if !(["master","1.0","1.1"].contains(v)) {
+    if (!["master","1.0","1.1"].contains(v)) {
         version = "master"
     }
 }
