@@ -56,6 +56,9 @@ def sanityCheck(t,v) {
     echo "${t} : ${v}"
     echo "Local: ${A_VERSIONS}"
     if (!A_VERSIONS.contains(v)) {
+        version = v
+    }
+    else {
         version = "master"
     }
 }
