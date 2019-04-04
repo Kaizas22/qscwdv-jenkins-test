@@ -58,6 +58,7 @@ def chooseLinuxVersion(v) {
 }
 
 def sanityCheck(t,v) {
+    echo "Local: ${t} -> ${v}"
     if (t.contains(v)) {
         version = v
     }
