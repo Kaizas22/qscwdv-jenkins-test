@@ -17,9 +17,9 @@ node {
             ]
         ],
         parameters ([
-            string(name: 'SVN', defaultValue: "TEST/", description: 'What SVN?'),
-            choice(name: 'VERSION', choices: VERSIONS.join("\n"), description: 'Some choice parameter'),
-            choice(name: 'TARGET', choices: TARGETS.join("\n"), description: 'Another choice parameter')
+            choice(name: 'TARGET', choices: TARGETS.join("\n"), description: 'Choose your target.'),
+            choice(name: 'VERSION', choices: VERSIONS.join("\n"), description: 'Choose the linux version.'),
+            string(name: 'SVN', defaultValue: "TEST/", description: 'Which SVN branch should be used?')
         ])
     ]);
 
@@ -30,12 +30,12 @@ node {
     stage('Prepare') {
         echo 'Prepare..'
         // include groovy file to choose something
-        def branches = load "${rootDir}/groovy/chooser.groovy"
+        def chooser = load "${rootDir}/groovy/chooser.groovy"
 
-        branches.chooseBranch(params.VERSION)
-        version = branches.getBranch()
-        branches.chooseTarget(params.TARGET)
-        target = branches.getTarget()
+        chooser.chooseTarget(params.TARGET)
+        target = chooser.getTarget()
+        chooser.chooseBranch(params.VERSION)
+        version = chooser.getBranch()
         
         currentBuild.description = "For Target ${target}"
     }
