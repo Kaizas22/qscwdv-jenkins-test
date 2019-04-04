@@ -11,18 +11,23 @@ def chooseTarget(t) {
     switch (t) {
         case 'A':
             target = 'A'
+            sanityCheck(A_VERSIONS, version)
             break
         case 'B':
             target = 'B'
+            sanityCheck(B_VERSIONS, version)
             break
         case 'C':
             target = 'C'
+            sanityCheck(C_VERSIONS, version)
             break
         case 'D':
             target = 'D'
+            sanityCheck(D_VERSIONS, version)
             break        
         default:
             target = 'E'
+            sanityCheck(E_VERSIONS, version)
     }
 }
 
@@ -53,9 +58,7 @@ def chooseLinuxVersion(v) {
 }
 
 def sanityCheck(t,v) {
-    echo "${t} : ${v}"
-    echo "Local: ${A_VERSIONS}"
-    if (!A_VERSIONS.contains(v)) {
+    if (t.contains(v)) {
         version = v
     }
     else {
