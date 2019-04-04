@@ -7,6 +7,32 @@ C_VERSIONS = ["master","v1.0","v1.1"]
 D_VERSIONS = ["master","v1.0"]
 E_VERSIONS = ["master"]
 
+def chooseLinuxVersion(v) {
+    switch (v) {
+        case "v1.0":
+            version = "v1.0"
+            break
+        case "v1.1":
+            version = "v1.1"
+            break
+        case "v1.2":
+            version = "v1.2"
+            break
+        case "v2.0":
+            version = "v2.0"
+            break
+        case "v2.1":
+            version = "v2.1"
+            break
+        default:
+            version = "master"
+    }
+}
+
+def getVersion() {
+    return version
+}
+
 def chooseTarget(t) {
     switch (t) {
         case 'A':
@@ -35,28 +61,6 @@ def getTarget() {
     return target
 }
 
-def chooseLinuxVersion(v) {
-    switch (v) {
-        case "v1.0":
-            version = "v1.0"
-            break
-        case "v1.1":
-            version = "v1.1"
-            break
-        case "v1.2":
-            version = "v1.2"
-            break
-        case "v2.0":
-            version = "v2.0"
-            break
-        case "v2.1":
-            version = "v2.1"
-            break
-        default:
-            version = "master"
-    }
-}
-
 def sanityCheck(t,v) {
     echo "Local: ${t} -> ${v}"
     if (t.contains(v)) {
@@ -65,10 +69,6 @@ def sanityCheck(t,v) {
     else {
         version = "master"
     }
-}
-
-def getVersion() {
-    return version
 }
 
 return this
