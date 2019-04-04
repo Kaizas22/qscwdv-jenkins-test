@@ -1,7 +1,9 @@
 node {
     
     def VERSIONS = ["master","1.0","1.1","1.2","2.0","2.1"]
+    def version
     def TARGETS = ["A","B","C","D","E"]
+    def target
     
     properties([
         [
@@ -31,11 +33,11 @@ node {
         def branches = load "${rootDir}/groovy/chooser.groovy"
 
         branches.chooseBranch(params.VERSION)
-        echo "${branches.getBranch()}"
+        version = branches.getBranch()
         branches.chooseTarget(params.TARGET)
-        echo "${branches.getTarget()}"
+        target = branches.getTarget()
         
-        currentBuild.description = "For Target ${TARGET}"
+        currentBuild.description = "For Target ${target}"
     }
     
     stage('Checkout') {
@@ -75,5 +77,5 @@ node {
             ]]
         )*/    
     }
-    currentBuild.displayName = "#${BUILD_NUMBER}, branch ${VERSION}"
+    currentBuild.displayName = "#${BUILD_NUMBER}, branch ${version}"
 }
