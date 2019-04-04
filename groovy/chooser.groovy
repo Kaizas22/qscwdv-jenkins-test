@@ -50,7 +50,6 @@ def chooseLinuxVersion(version) {
         default:
             this.version = 'master'
     }
-    this.checkTargetVersion(target,version)
 }
 
 checkTargetVersion(target,version) {
