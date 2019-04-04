@@ -55,7 +55,7 @@ def chooseLinuxVersion(version) {
 
 def checkTargetVersion(target,version) {
     echo "${this.getTarget()} : ${this.getVersion()}"
-    assert this.A_VERSIONS.contains(this.getVersion)
+    assert this.A_VERSIONS.contains(this.getVersion())
     echo "true"
 }
 
