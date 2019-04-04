@@ -53,8 +53,8 @@ def chooseLinuxVersion(version) {
     this.checkTargetVersion(target,version)
 }
 
-def checkTargetVersion(target,this.version) {
-    echo "${target}: ${version}"
+def checkTargetVersion(target,version) {
+    echo "${this.getTarget()} : ${this.getVersion()}"
 }
 
 def getVersion() {
