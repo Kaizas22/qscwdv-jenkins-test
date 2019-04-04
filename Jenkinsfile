@@ -30,21 +30,23 @@ node {
         // include groovy file to choose something
         def branches = load "${rootDir}/groovy/chooser.groovy"
 
-        BRANCH = branches.chooseBranch(params.VERSION)
-        TARGET = branches.chooseTarget(params.TARGET)
+        branches.chooseBranch(params.VERSION)
+        echo "${branch.getBranch()}"
+        branches.chooseTarget(params.TARGET)
+        echo "${branches.getTarget()}"
         
         currentBuild.description = "For Target ${TARGET}"
     }
     
     stage('Checkout') {
         // include groovy file to checkout repositories
-        def repository = load "${rootDir}/groovy/repository.groovy"
-        repository.checkoutGit("asfjakl-", BRANCH)
+        //def repository = load "${rootDir}/groovy/repository.groovy"
+        //repository.checkoutGit("asfjakl-", BRANCH)
         //repository.checkoutSvn(params.SVN)
     }
     stage('Build') {
         echo 'Building..'
-        sh "bash/init_env.sh 12345 ${TARGET}"
+        //sh "bash/init_env.sh 12345 ${TARGET}"
     }
     stage('Test') {
         echo 'Testing..'
