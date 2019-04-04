@@ -34,7 +34,7 @@ node {
 
         chooser.chooseTarget(params.TARGET)
         target = chooser.getTarget()
-        chooser.chooseLinuxVersion(params.VERSION)
+        chooser.chooseLinuxVersion(params.LINUX_VERSION)
         version = chooser.getVersion()
         echo "Jenkins says: ${target}, ${version}"
         
