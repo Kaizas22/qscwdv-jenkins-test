@@ -38,7 +38,7 @@ node {
         version = chooser.getVersion()
         target = chooser.getTarget()
         
-        currentBuild.description = "For Target ${target} started from ${BUILD_USER}"
+        currentBuild.description = "For Target ${target}"
     }
     
     stage('Checkout') {
