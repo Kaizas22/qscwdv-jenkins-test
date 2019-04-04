@@ -1,10 +1,10 @@
 def version
 def target
 
-A_VERSIONS = ["master","1.0","1.1","1.2","2.0","2.1"]
-B_VERSIONS = ["master","1.0","1.1","1.2"]
-C_VERSIONS = ["master","1.0","1.1"]
-D_VERSIONS = ["master","1.0"]
+A_VERSIONS = ["master","v1.0","v1.1","v1.2","v2.0"]
+B_VERSIONS = ["master","v1.0","v1.1","v1.2"]
+C_VERSIONS = ["master","v1.0","v1.1"]
+D_VERSIONS = ["master","v1.0"]
 E_VERSIONS = ["master"]
 
 def chooseTarget(t) {
@@ -37,19 +37,19 @@ def getTarget() {
 
 def chooseLinuxVersion(v) {
     switch (v) {
-        case "1.0":
+        case "v1.0":
             version = "v1.0"
             break
-        case "1.1":
+        case "v1.1":
             version = "v1.1"
             break
-        case "1.2":
+        case "v1.2":
             version = "v1.2"
             break
-        case "2.0":
+        case "v2.0":
             version = "v2.0"
             break
-        case "2.1":
+        case "v2.1":
             version = "v2.1"
             break
         default:
