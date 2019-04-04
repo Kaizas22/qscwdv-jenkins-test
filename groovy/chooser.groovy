@@ -7,22 +7,22 @@ def C_VERSIONS = ["master","1.0","1.1"]
 def D_VERSIONS = ["master","1.0"]
 def E_VERSIONS = ["master"]
 
-def chooseTarget(target) {
-    switch (target) {
+def chooseTarget(t) {
+    switch (t) {
         case 'A':
-            this.target = 'A'
+            target = 'A'
             break
         case 'B':
-            this.target = 'B'
+            target = 'B'
             break
         case 'C':
-            this.target = 'C'
+            target = 'C'
             break
         case 'D':
-            this.target = 'D'
+            target = 'D'
             break        
         default:
-            this.target = 'E'
+            target = 'E'
     }
 }
 
@@ -30,8 +30,8 @@ def getTarget() {
     return target
 }
 
-def chooseLinuxVersion(version) {
-    switch (version) {
+def chooseLinuxVersion(v) {
+    switch (v) {
         case '1.0':
             version = 'v1.0'
             break
@@ -39,16 +39,16 @@ def chooseLinuxVersion(version) {
             version = 'v1.1'
             break
         case '1.2':
-            this.version = 'v1.2'
+            version = 'v1.2'
             break
         case '2.0':
-            this.version = 'v2.0'
+            version = 'v2.0'
             break
         case '2.1':
-            this.version = 'v2.1'
+            version = 'v2.1'
             break
         default:
-            this.version = 'master'
+            version = 'master'
     }
     this.checkTargetVersion(target,version)
 }
