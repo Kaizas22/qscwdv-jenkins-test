@@ -1,32 +1,11 @@
 def version
 def target
 
-def chooseBranch(version) {
-    switch (version) {
-        case '1.0':
-            this.version = 'v1.0'
-            break
-        case '1.1':
-            this.version = 'v1.1'
-            break
-        case '1.2':
-            this.version = 'v1.2'
-            break
-        case '2.0':
-            this.version = 'v2.0'
-            break
-        case '2.1':
-            this.version = 'v2.1'
-            break
-        default:
-            this.version = 'master'
-            break
-    }
-}
-
-def getBranch() {
-    return version
-}
+def A_VERSIONS ["master","1.0","1.1","1.2","2.0","2.1"]
+def B_VERSIONS ["master","1.0","1.1","1.2"]
+def C_VERSIONS ["master","1.0","1.1"]
+def D_VERSIONS ["master","1.0"]
+def E_VERSIONS ["master"]
 
 def chooseTarget(target) {
     switch (target) {
@@ -49,6 +28,37 @@ def chooseTarget(target) {
 
 def getTarget() {
     return target
+}
+
+def chooseLinuxVersion(version) {
+    switch (version) {
+        case '1.0':
+            this.version = 'v1.0'
+            break
+        case '1.1':
+            this.version = 'v1.1'
+            break
+        case '1.2':
+            this.version = 'v1.2'
+            break
+        case '2.0':
+            this.version = 'v2.0'
+            break
+        case '2.1':
+            this.version = 'v2.1'
+            break
+        default:
+            this.version = 'master'
+    }
+    checkTargetVersion(target,version)
+}
+
+checkTargetVersion(target,version) {
+    echo "${target}: ${version}"
+}
+
+def getVersion() {
+    return version
 }
 
 return this
