@@ -28,7 +28,7 @@ node {
             booleanParam(name: 'BUILD_SDK', defaultValue: false, description: 'Should a SDK be built?'),
             booleanParam(name: 'BUILD_KERNEL_SDK', defaultValue: false, description: 'Should a SDK for the kernel be built?'),
             booleanParam(name: 'BOOTLOADER_UPDATE', defaultValue: false, description: 'Is a bootloader update necessary?'),
-            booleanParam(name: 'SPECIAL_BUILD', defaultValue: false, description: 'A special build is needed?)
+            booleanParam(name: 'SPECIAL_BUILD', defaultValue: false, description: 'A special build is needed?')
         ])
     ]);
 
