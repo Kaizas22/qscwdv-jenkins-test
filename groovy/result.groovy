@@ -1,5 +1,6 @@
 def copyResults() {
     echo 'Copy Results..'
+    sh 'bash/init_env.sh 123342 sdfas'
 }
 
 def archiveResults() {
