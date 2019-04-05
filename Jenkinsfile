@@ -56,7 +56,7 @@ node {
     
     stage('Checkout') {
         // include groovy file to checkout repositories
-        def repository = load "${rootDir}/groovy/repository.groovy"
+        def checkout = load "${rootDir}/groovy/repository.groovy"
         // checkout git repositories
         echo "Checkout yocto-meta/poky"
         echo "Checkout yocto-meta/meta-openembedded"
@@ -67,9 +67,9 @@ node {
         echo "Checkout yocto-mymeta/meta-fw"
         echo "Checkout targets/${platform}/meta-${repository}_bsp"
         echo "Checkout targets/${platform}/meta-${repository}_product"
-        repository.checkoutGit('asfjakl-', version)
+        checkout.checkoutGit('asfjakl-', version)
         // checkout svn repositories
-        //repository.checkoutSvn(params.SVN)
+        //checkout.checkoutSvn(params.SVN)
     }
     stage('Prepare Environment') {
         sh "bash/init_env.sh 12345 ${machine}"
