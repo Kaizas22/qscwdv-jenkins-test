@@ -7,6 +7,15 @@ C_VERSIONS = ["master","v1.0","v1.1"]
 D_VERSIONS = ["master","v1.0"]
 E_VERSIONS = ["master"]
 
+class Target {
+    String repo
+    String machine
+    String platform
+    String device
+}
+
+def a = new Target([repo: 'meta-axc_bsp', machine: 'axcf', platform: 'axcf', device: 'axcf'])
+
 def chooseLinuxVersion(v) {
     switch (v) {
         case "v1.0":
@@ -38,6 +47,8 @@ def chooseTarget(t) {
         case 'A':
             target = 'A'
             sanityCheck(A_VERSIONS, version)
+            a = new Target([repo: 'meta-axc_bsp', machine: 'axcf', platform: 'axcf', device: 'axcf'])
+            echo "Repo: ${a.repo}"
             break
         case 'B':
             target = 'B'
