@@ -2,7 +2,7 @@
 
 pwd
 
-PLATFORM=$1
+PLATFORMSDK=$1
 SDKMACHINE=$2
 
 echo "source poky/oe-init-build-env \"\""
