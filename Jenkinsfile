@@ -5,7 +5,7 @@ node {
     def TARGETS = ['A','B','C','D','E']
     def target
     
-    def repo
+    def repository
     def machine
     def platform
     def device
