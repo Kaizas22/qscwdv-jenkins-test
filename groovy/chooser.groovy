@@ -70,6 +70,22 @@ def getTarget() {
     return target
 }
 
+def getRepository() {
+    return target.repository
+}
+
+def getMachine() {
+    return target.machine
+}
+
+def getPlatform() {
+    return target.platform
+}
+
+def getDevice() {
+    return target.device
+}
+
 def sanityCheck(t,v) {
     if (t.contains(v)) {
         version = v
