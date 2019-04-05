@@ -100,7 +100,7 @@ node {
             sh "bash/build_sdk.sh A-image-kernel-sdk x86_64"
         }
         else {
-            echo 'Build 64bit Linux Kernel SDK'
+            echo 'Skip Build 64bit Linux Kernel SDK'
         }
     }
     stage('Build 32bit Linux Kernel SDK') {
@@ -108,7 +108,7 @@ node {
             sh "bash/build_sdk.sh A-image-kernel-sdk i686"
         }
         else {
-            echo 'Build 32bit Linux Kernel SDK'
+            echo 'Skip Build 32bit Linux Kernel SDK'
         }
     }
     stage('Build API Documentation') {
