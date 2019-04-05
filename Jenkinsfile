@@ -64,13 +64,13 @@ node {
         echo 'Build Bundle..'
     }
     stage('Build Linux 64bit SDK') {
-        echo 'Build Linux 64bit SDK..'
+        sh "bash/build_sdk.sh A-image-sdk x86_64"
     }
     stage('Build Linux 32bit SDK') {
-        echo 'Build Linux 32bit SDK..'
+        sh "bash/build_sdk.sh A-image-sdk i686"
     }
     stage('Build Windows 64bit SDK') {
-        echo 'Build Windows 64bit SDK..'
+        sh "bash/build_sdk.sh A-image-mingw mingw32-64"
     }
     stage('Build 64bit Linux Kernel SDK') {
         echo 'Build 64bit Linux Kernel SDK'
