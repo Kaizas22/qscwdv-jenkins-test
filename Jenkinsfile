@@ -88,10 +88,20 @@ node {
         }
     }
     stage('Build 64bit Linux Kernel SDK') {
-        sh "bash/build_sdk.sh A-image-kernel-sdk x86_64"
+        if (params.BUILD_KERNEL_SDK == "true") {
+            sh "bash/build_sdk.sh A-image-kernel-sdk x86_64"
+        }
+        else {
+            echo "Build 64bit Linux Kernel SDK"
+        }
     }
     stage('Build 32bit Linux Kernel SDK') {
-        sh "bash/build_sdk.sh A-image-kernel-sdk i686"
+        if (params.BUILD_KERNEL_SDK == "true") {
+            sh "bash/build_sdk.sh A-image-kernel-sdk i686"
+        }
+        else {
+            echo "Build 32bit Linux Kernel SDK"
+        }
     }
     stage('Build API Documentation') {
         echo 'Build API Documentation..'
