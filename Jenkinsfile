@@ -56,7 +56,7 @@ node {
     
     stage('Checkout') {
         // include groovy file to checkout repositories
-        def checkout = load "${rootDir}/groovy/repository.groovy"
+        def checkout = load "${rootDir}/groovy/checkout.groovy"
         // checkout git repositories
         echo "Checkout yocto-meta/poky"
         echo "Checkout yocto-meta/meta-openembedded"
