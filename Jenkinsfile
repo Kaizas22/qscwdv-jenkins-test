@@ -17,11 +17,11 @@ node {
             ]
         ],
         parameters ([
-            choice(name: "TARGET", choices: TARGETS.join("\n"), description: "Choose your target."),
-            choice(name: "LINUX_VERSION", choices: VERSIONS.join("\n"), description: "Choose the linux version."),
-            string(name: "SVN", defaultValue: "TEST/", description: "Which SVN branch should be used?"),
-            booleanParam(name: "BUILD_SDK", defaultValue: false, description: "Should a SDK be built?"),
-            booleanParam(name: "BUILD_KERNEL_SDK", defaultValue: false, description: "Should a kernel SDK be built?")
+            choice(name: 'TARGET', choices: TARGETS.join("\n"), description: 'Choose your target.'),
+            choice(name: 'LINUX_VERSION', choices: VERSIONS.join("\n"), description: 'Choose the linux version.'),
+            string(name: 'SVN', defaultValue: "TEST/", description: 'Which SVN branch should be used?'),
+            booleanParam(name: 'BUILD_SDK', defaultValue: false, description: 'Should a SDK be built?'),
+            booleanParam(name: 'BUILD_KERNEL_SDK', defaultValue: false, description: 'Should a SDK for the kernel be built?')
         ])
     ]);
 
@@ -30,7 +30,6 @@ node {
     def rootDir = pwd()
     
     stage('Prepare Jenkins') {
-        echo 'Prepare..'
         // include groovy file to choose 
         def chooser = load "${rootDir}/groovy/chooser.groovy"
 
@@ -63,6 +62,7 @@ node {
         echo 'Build Bundle..'
     }
     stage('Build Linux 64bit SDK') {
+        echo "Build ${params.BUILD_SDK}"
         if (params.BUILD_SDK = "true") {
             sh "bash/build_sdk.sh A-image-sdk x86_64"
         }
@@ -79,7 +79,7 @@ node {
         }
     }
     stage('Build Windows 64bit SDK') {
-        if (params.BUILD_SDK = "true") {
+        if (params.BUILD_SDK == true) {
             sh "bash/build_sdk.sh A-image-mingw mingw32-64"
         }
         else {
@@ -95,7 +95,7 @@ node {
         }
     }
     stage('Build 32bit Linux Kernel SDK') {
-        if (params.BUILD_KERNEL_SDK = "true") {
+        if (params.BUILD_KERNEL_SDK == "true") {
             sh "bash/build_sdk.sh A-image-kernel-sdk i686"
         }
         else {
