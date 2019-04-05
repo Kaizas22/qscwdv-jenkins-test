@@ -1,12 +1,6 @@
 def version
 def target
 
-A_VERSIONS = ["master","v1.0","v1.1","v1.2","v2.0"]
-B_VERSIONS = ["master","v1.0","v1.1","v1.2"]
-C_VERSIONS = ["master","v1.0","v1.1"]
-D_VERSIONS = ["master","v1.0"]
-E_VERSIONS = ["master"]
-
 class Target {
     String repo
     String machine
@@ -14,7 +8,13 @@ class Target {
     String device
 }
 
-def a = new Target([repo: 'meta-axc_bsp', machine: 'axcf', platform: 'axcf', device: 'axcf'])
+A_VERSIONS = ["master","v1.0","v1.1","v1.2","v2.0"]
+B_VERSIONS = ["master","v1.0","v1.1","v1.2"]
+C_VERSIONS = ["master","v1.0","v1.1"]
+D_VERSIONS = ["master","v1.0"]
+E_VERSIONS = ["master"]
+
+
 
 def chooseLinuxVersion(v) {
     switch (v) {
@@ -45,9 +45,8 @@ def getVersion() {
 def chooseTarget(t) {
     switch (t) {
         case 'A':
-            target = 'A'
             sanityCheck(A_VERSIONS, version)
-            a = new Target([repo: 'meta-axc_bsp', machine: 'axcf', platform: 'axcf', device: 'axcf'])
+            target = new Target([repo: 'meta-axc_bsp', machine: 'axcf', platform: 'axcf', device: 'axcf'])
             echo "Repo: ${a.repo}"
             break
         case 'B':
@@ -55,8 +54,8 @@ def chooseTarget(t) {
             sanityCheck(B_VERSIONS, version)
             break
         case 'C':
-            target = 'C'
             sanityCheck(C_VERSIONS, version)
+            target = new Target([repo: 'meta-rfc_bsp', machine: 'rfc-64', platform: 'rfc', device: 'rfc'])
             break
         case 'D':
             target = 'D'
