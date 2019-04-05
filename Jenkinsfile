@@ -73,7 +73,7 @@ node {
     }
     stage('Build Linux 64bit SDK') {
         if (params.BUILD_SDK == true) {
-            sh "bash/build_sdk.sh A-image-sdk x86_64"
+            sh "bash/build_sdk.sh ${platform}-image-sdk x86_64"
         }
         else {
             echo 'Skip Build Linux 64bit SDK'
@@ -81,7 +81,7 @@ node {
     }
     stage('Build Linux 32bit SDK') {
         if (params.BUILD_SDK == true) {
-            sh "bash/build_sdk.sh A-image-sdk i686"
+            sh "bash/build_sdk.sh ${platform}-image-sdk i686"
         }
         else {
             echo 'Skip Build Linux 32bit SDK'
@@ -89,7 +89,7 @@ node {
     }
     stage('Build Windows 64bit SDK') {
         if (params.BUILD_SDK == true) {
-            sh "bash/build_sdk.sh A-image-mingw mingw32-64"
+            sh "bash/build_sdk.sh ${platform}-image-mingw mingw32-64"
         }
         else {
             echo 'Skip Build Windows 64bit SDK'
@@ -97,7 +97,7 @@ node {
     }
     stage('Build 64bit Linux Kernel SDK') {
         if (params.BUILD_KERNEL_SDK == true) {
-            sh "bash/build_sdk.sh A-image-kernel-sdk x86_64"
+            sh "bash/build_sdk.sh ${platform}-image-kernel-sdk x86_64"
         }
         else {
             echo 'Skip Build 64bit Linux Kernel SDK'
@@ -105,7 +105,7 @@ node {
     }
     stage('Build 32bit Linux Kernel SDK') {
         if (params.BUILD_KERNEL_SDK == true) {
-            sh "bash/build_sdk.sh A-image-kernel-sdk i686"
+            sh "bash/build_sdk.sh ${platform}-image-kernel-sdk i686"
         }
         else {
             echo 'Skip Build 32bit Linux Kernel SDK'
