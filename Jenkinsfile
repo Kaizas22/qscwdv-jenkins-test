@@ -29,7 +29,7 @@ node {
     checkout scm
     def rootDir = pwd()
     
-    stage('Prepare') {
+    stage('Prepare Jenkins') {
         echo 'Prepare..'
         // include groovy file to choose 
         def chooser = load "${rootDir}/groovy/chooser.groovy"
@@ -50,15 +50,39 @@ node {
         repository.checkoutGit("asfjakl-", version)
         //repository.checkoutSvn(params.SVN)
     }
-    stage('Build') {
+    stage('Prepare Environment') {
         echo 'Building..'
         sh "bash/init_env.sh 12345 ${TARGET}"
     }
-    stage('Test') {
-        echo 'Testing..'
+    stage('Clean ARP') {
+        echo 'Clean ARP..'
     }
-    stage('Deploy') {
-        echo 'Deploying....'
+    stage('Build Image') {
+        echo 'Build Image..'
+    }
+    stage('Build Bundle') {
+        echo 'Build Bundle..'
+    }
+    stage('Build Linux 64bit SDK') {
+        echo 'Build Linux 64bit SDK..'
+    }
+    stage('Build Linux 32bit SDK') {
+        echo 'Build Linux 32bit SDK..'
+    }
+    stage('Build Windows 64bit SDK') {
+        echo 'Build Windows 64bit SDK..'
+    }
+    stage('Build 64bit Linux Kernel SDK') {
+        echo 'Build 64bit Linux Kernel SDK'
+    }
+    stage('Build 32bit Linux Kernel SDK') {
+        echo 'Build 32bit Linux Kernel SDK..'
+    }
+    stage('Build API Documentation') {
+        echo 'Build API Documentation..'
+    }
+    stage('Copy Result') {
+        echo 'Copy Result..'
         /*archiveArtifacts '...'
         cifsPublisher (
             publishers: [[
