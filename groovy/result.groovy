@@ -1,4 +1,4 @@
-def copyResults() {
+def copyResults(machine, device) {
     echo 'Copy Results..'
     sh "bash/copy_results.sh ${machine} ${device}"
 }
