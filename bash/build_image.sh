@@ -8,4 +8,4 @@ echo "source poky/oe-init-build-env \"\""
 
 echo $PLATFORM
 
-echo "bitbake $PLATFORM-bundle-base"
+echo "bitbake $PLATFORM-image-base"
