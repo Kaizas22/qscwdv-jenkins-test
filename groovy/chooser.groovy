@@ -2,7 +2,7 @@ def version
 def target
 
 class Target {
-    String repo
+    String repository
     String machine
     String platform
     String device
@@ -46,22 +46,22 @@ def chooseTarget(t) {
     switch (t) {
         case 'A':
             sanityCheck(A_VERSIONS, version)
-            target = new Target([repo: 'axc', machine: 'axcf', platform: 'axcf', device: 'axcf'])
+            target = new Target([repository: 'axc', machine: 'axcf', platform: 'axcf', device: 'axcf'])
             break
         case 'B':
             sanityCheck(B_VERSIONS, version)
-            target = new Target([repo: 'axc', machine: 'axcf', platform: 'axcf', device: 'bxcf'])
+            target = new Target([repository: 'axc', machine: 'axcf', platform: 'axcf', device: 'bxcf'])
             break
         case 'C':
             sanityCheck(C_VERSIONS, version)
-            target = new Target([repo: 'rfc', machine: 'rfc-64', platform: 'rfc', device: 'rfc'])
+            target = new Target([repository: 'rfc', machine: 'rfc-64', platform: 'rfc', device: 'rfc'])
             break
         case 'D':
             sanityCheck(D_VERSIONS, version)
-            target = new Target([repo: 'rfc', machine: 'rfc-64', platform: 'rfc', device: 'dfc'])
+            target = new Target([repository: 'rfc', machine: 'rfc-64', platform: 'rfc', device: 'dfc'])
             break        
         default:
-            target = new Target([repo: 'ec', machine: 'ec-32', platform: 'ec', device: 'ekg'])
+            target = new Target([repository: 'ec', machine: 'ec-32', platform: 'ec', device: 'ekg'])
             sanityCheck(E_VERSIONS, version)
     }
 }
