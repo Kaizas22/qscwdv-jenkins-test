@@ -10,6 +10,6 @@ echo $DEVICE
 
 echo "bitbake $DEVICE-image-base"
 
-if [$SPECIAL_BUILD == true]; then
+if [ $SPECIAL_BUILD == "true" ]; then
     echo "bitbake $DEVICE-image-special"
 fi
