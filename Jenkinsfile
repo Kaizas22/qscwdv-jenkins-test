@@ -126,29 +126,12 @@ node {
     stage('Build API Documentation') {
         echo 'Build API Documentation..'
     }
-    stage('Copy Result') {
-        echo 'Copy Result..'
-        /*archiveArtifacts '...'
-        cifsPublisher (
-            publishers: [[
-                configName: '...',
-                transfers: [[
-                    cleanRemote: false,
-                    excludes: '',
-                    flatten: false,
-                    makeEmptyDirs: false,
-                    noDefaultExcludes: false,
-                    patternSeparator: '[, ]+',
-                    remoteDirectory: '...',
-                    remoteDirectorySDF: false,
-                    removePrefix: '...',
-                    sourceFiles: '...'
-                ]],
-                usePromotionTimestamp: false,
-                useWorkspaceInPromotion: false,
-                verbose: false
-            ]]
-        )*/    
+    stage('Copy Results') {        
+        // include groovy file to copy results
+        def result = load "${rootDir}/groovy/result.groovy"
+        
+        result.copyResults()
+        result.archiveResults()
     }
     currentBuild.displayName = "#${BUILD_NUMBER}: branch ${version}"
 }
