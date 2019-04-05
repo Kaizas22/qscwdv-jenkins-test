@@ -63,7 +63,7 @@ node {
     }
     stage('Build Linux 64bit SDK') {
         echo "Build ${params.BUILD_SDK}"
-        if (params.BUILD_SDK = "true") {
+        if (params.BUILD_SDK == "true") {
             sh "bash/build_sdk.sh A-image-sdk x86_64"
         }
         else {
@@ -71,7 +71,7 @@ node {
         }
     }
     stage('Build Linux 32bit SDK') {
-        if (params.BUILD_SDK = "true") {
+        if (params.BUILD_SDK == "true") {
             sh "bash/build_sdk.sh A-image-sdk i686"
         }
         else {
@@ -87,7 +87,7 @@ node {
         }
     }
     stage('Build 64bit Linux Kernel SDK') {
-        if (params.BUILD_KERNEL_SDK = "true") {
+        if (params.BUILD_KERNEL_SDK == "true") {
             sh "bash/build_sdk.sh A-image-kernel-sdk x86_64"
         }
         else {
