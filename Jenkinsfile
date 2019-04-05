@@ -66,10 +66,10 @@ node {
         echo 'Clean Firmware..'
     }
     stage('Build Image') {
-        echo 'Build Image..'
+        sh "bash/build_image.sh ${device}"
     }
     stage('Build Bundle') {
-        echo 'Build Bundle..'
+        sh "bash/build_bundle.sh ${platform}"
     }
     stage('Build Linux 64bit SDK') {
         if (params.BUILD_SDK == true) {
