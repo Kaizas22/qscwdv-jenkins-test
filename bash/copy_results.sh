@@ -7,3 +7,7 @@ DEVICE=$2
 
 echo $MACHINE
 echo $DEVICE
+
+if [ ! -d "result" ]; then
+    mkdir result
+fi
