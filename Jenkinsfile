@@ -64,19 +64,34 @@ node {
         echo 'Build Bundle..'
     }
     stage('Build Linux 64bit SDK') {
-        sh "bash/build_sdk.sh A-image-sdk x86_64"
+        if (params.BUILD_SDK == "true") {
+            sh "bash/build_sdk.sh A-image-sdk x86_64"
+        }
+        else {
+            echo "Skip Build Linux 64bit SDK"
+        }
     }
     stage('Build Linux 32bit SDK') {
-        sh "bash/build_sdk.sh A-image-sdk i686"
+        if (params.BUILD_SDK == "true") {
+            sh "bash/build_sdk.sh A-image-sdk i686"
+        }
+        else {
+            echo "Skip Build Linux 32bit SDK"
+        }
     }
     stage('Build Windows 64bit SDK') {
-        sh "bash/build_sdk.sh A-image-mingw mingw32-64"
+        if (params.BUILD_SDK == "true") {
+            sh "bash/build_sdk.sh A-image-mingw mingw32-64"
+        }
+        else {
+            echo "Skip Build Windows 64bit SDK"
+        }
     }
     stage('Build 64bit Linux Kernel SDK') {
-        echo 'Build 64bit Linux Kernel SDK'
+        sh "bash/build_sdk.sh A-image-kernel-sdk x86_64"
     }
     stage('Build 32bit Linux Kernel SDK') {
-        echo 'Build 32bit Linux Kernel SDK..'
+        sh "bash/build_sdk.sh A-image-kernel-sdk i686"
     }
     stage('Build API Documentation') {
         echo 'Build API Documentation..'
