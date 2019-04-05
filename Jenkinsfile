@@ -47,17 +47,29 @@ node {
         target = chooser.getTarget()
         
         repo = 'axc'
+        //repo = chooser.getRepo()
         machine = 'axcf'
+        //machine = chooser.getMachine()
         platform = 'axcf'
+        //platform = chooser.getPlatform()
         device = 'axcf'
+        //device = chooser.getDevice()
         
-        currentBuild.description = "For Target ${target}"
+        currentBuild.description = "For Device ${device}"
     }
     
     stage('Checkout') {
         // include groovy file to checkout repositories
         def repository = load "${rootDir}/groovy/repository.groovy"
-        echo "Checkout ${repo} Repository"
+        echo "Checkout poky Repository"
+        echo "Checkout meta-openembedded Repository"
+        echo "Checkout meta-mingw Repository"
+        echo "Checkout meta-security Repository"
+        echo "Checkout meta-rauc Repository"
+        echo "Checkout meta-custom Repository"
+        echo "Checkout meta-fw Repository"
+        echo "Checkout meta-${repo}_bsp Repository"
+        echo "Checkout meta-${repo}_product Repository"
         repository.checkoutGit('asfjakl-', version)
         //repository.checkoutSvn(params.SVN)
     }
