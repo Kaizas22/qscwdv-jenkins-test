@@ -46,13 +46,9 @@ node {
         version = chooser.getVersion()
         target = chooser.getTarget()
         
-        //repo = 'axc'
         repository = chooser.getRepository()
-        //machine = 'axcf'
         machine = chooser.getMachine()
-        //platform = 'axcf'
         platform = chooser.getPlatform()
-        //device = 'axcf'
         device = chooser.getDevice()
         
         currentBuild.description = "For Device ${device}"
@@ -61,16 +57,18 @@ node {
     stage('Checkout') {
         // include groovy file to checkout repositories
         def repository = load "${rootDir}/groovy/repository.groovy"
-        echo "Checkout yocto-meta/poky Repository"
-        echo "Checkout yocto-meta/meta-openembedded Repository"
-        echo "Checkout yocto-meta/meta-mingw Repository"
-        echo "Checkout yocto-meta/meta-security Repository"
-        echo "Checkout yocto-meta/meta-rauc Repository"
-        echo "Checkout yocto-mymeta/meta-custom Repository"
-        echo "Checkout yocto-mymeta/meta-fw Repository"
-        echo "Checkout targets/${platform}/meta-${repository}_bsp Repository"
-        echo "Checkout targets/${platform}/meta-${repository}_product Repository"
+        // checkout git repositories
+        echo "Checkout yocto-meta/poky"
+        echo "Checkout yocto-meta/meta-openembedded"
+        echo "Checkout yocto-meta/meta-mingw"
+        echo "Checkout yocto-meta/meta-security"
+        echo "Checkout yocto-meta/meta-rauc"
+        echo "Checkout yocto-mymeta/meta-custom"
+        echo "Checkout yocto-mymeta/meta-fw"
+        echo "Checkout targets/${platform}/meta-${repository}_bsp"
+        echo "Checkout targets/${platform}/meta-${repository}_product"
         repository.checkoutGit('asfjakl-', version)
+        // checkout svn repositories
         //repository.checkoutSvn(params.SVN)
     }
     stage('Prepare Environment') {
