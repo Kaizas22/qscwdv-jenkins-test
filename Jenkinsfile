@@ -45,7 +45,6 @@ node {
 
         version = chooser.getVersion()
         target = chooser.getTarget()
-        echo "Repo: ${target.repo}"
         
         //repo = 'axc'
         repository = chooser.getRepository()
