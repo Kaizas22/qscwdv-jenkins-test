@@ -69,7 +69,7 @@ node {
         echo "Checkout yocto-mymeta/meta-custom Repository"
         echo "Checkout yocto-mymeta/meta-fw Repository"
         echo "Checkout targets/${platform}/meta-${repository}_bsp Repository"
-        echo "Checkout argets/${platform}/meta-${repository}_product Repository"
+        echo "Checkout targets/${platform}/meta-${repository}_product Repository"
         repository.checkoutGit('asfjakl-', version)
         //repository.checkoutSvn(params.SVN)
     }
