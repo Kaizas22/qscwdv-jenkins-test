@@ -47,7 +47,6 @@ def chooseTarget(t) {
         case 'A':
             sanityCheck(A_VERSIONS, version)
             target = new Target([repo: 'meta-axc_bsp', machine: 'axcf', platform: 'axcf', device: 'axcf'])
-            echo "Repo: ${a.repo}"
             break
         case 'B':
             target = 'B'
