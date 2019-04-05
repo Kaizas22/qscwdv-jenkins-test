@@ -54,8 +54,8 @@ node {
         echo 'Building..'
         sh "bash/init_env.sh 12345 ${TARGET}"
     }
-    stage('Clean ARP') {
-        echo 'Clean ARP..'
+    stage('Clean Firmware') {
+        echo 'Clean Firmware..'
     }
     stage('Build Image') {
         echo 'Build Image..'
