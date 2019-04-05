@@ -1,5 +1,6 @@
 def copyResults() {
     echo 'Copy Results..'
+    sh "bash/copy_results.sh ${machine} ${device}"
 }
 
 def archiveResults() {

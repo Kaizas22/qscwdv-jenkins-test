@@ -58,18 +58,18 @@ node {
         // include groovy file to checkout repositories
         def checkout = load "${rootDir}/groovy/checkout.groovy"
         // checkout git repositories
-        echo "Checkout yocto-meta/poky"
-        echo "Checkout yocto-meta/meta-openembedded"
-        echo "Checkout yocto-meta/meta-mingw"
-        echo "Checkout yocto-meta/meta-security"
-        echo "Checkout yocto-meta/meta-rauc"
-        echo "Checkout yocto-mymeta/meta-custom"
-        echo "Checkout yocto-mymeta/meta-fw"
-        echo "Checkout targets/${platform}/meta-${repository}_bsp"
-        echo "Checkout targets/${platform}/meta-${repository}_product"
+        echo "checkout.checkoutGit(yocto-meta/poky, version)"
+        echo "checkout.checkoutGit(yocto-meta/meta-openembedded, version)"
+        echo "checkout.checkoutGit(yocto-meta/meta-mingw, version)"
+        echo "checkout.checkoutGit(yocto-meta/meta-security, version)"
+        echo "checkout.checkoutGit(yocto-meta/meta-rauc, version)"
+        echo "checkout.checkoutGit(yocto-mymeta/meta-custom, version)"
+        echo "checkout.checkoutGit(yocto-mymeta/meta-fw, version)"
+        echo "checkout.checkoutGit(targets/${platform}/meta-${repository}_bsp, version)"
+        echo "checkout.checkoutGit(targets/${platform}/meta-${repository}_product, version)"
         checkout.checkoutGit('asfjakl-', version)
         // checkout svn repositories
-        //checkout.checkoutSvn(params.SVN)
+        echo "checkout.checkoutSvn(params.SVN)"
     }
     stage('Prepare Environment') {
         sh "bash/init_env.sh 12345 ${machine}"
