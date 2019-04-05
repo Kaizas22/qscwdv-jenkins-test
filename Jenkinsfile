@@ -61,15 +61,15 @@ node {
     stage('Checkout') {
         // include groovy file to checkout repositories
         def repository = load "${rootDir}/groovy/repository.groovy"
-        echo "Checkout poky Repository"
-        echo "Checkout meta-openembedded Repository"
-        echo "Checkout meta-mingw Repository"
-        echo "Checkout meta-security Repository"
-        echo "Checkout meta-rauc Repository"
-        echo "Checkout meta-custom Repository"
-        echo "Checkout meta-fw Repository"
-        echo "Checkout meta-${repo}_bsp Repository"
-        echo "Checkout meta-${repo}_product Repository"
+        echo "Checkout yocto-meta/poky Repository"
+        echo "Checkout yocto-meta/meta-openembedded Repository"
+        echo "Checkout yocto-meta/meta-mingw Repository"
+        echo "Checkout yocto-meta/meta-security Repository"
+        echo "Checkout yocto-meta/meta-rauc Repository"
+        echo "Checkout yocto-mymeta/meta-custom Repository"
+        echo "Checkout yocto-mymeta/meta-fw Repository"
+        echo "Checkout targets/${platform}/meta-${repository}_bsp Repository"
+        echo "Checkout argets/${platform}/meta-${repository}_product Repository"
         repository.checkoutGit('asfjakl-', version)
         //repository.checkoutSvn(params.SVN)
     }
