@@ -47,14 +47,14 @@ node {
         target = chooser.getTarget()
         echo "Repo: ${target.repo}"
         
-        repo = 'axc'
-        //repo = chooser.getRepo()
-        machine = 'axcf'
-        //machine = chooser.getMachine()
-        platform = 'axcf'
-        //platform = chooser.getPlatform()
-        device = 'axcf'
-        //device = chooser.getDevice()
+        //repo = 'axc'
+        repository = chooser.getRepository()
+        //machine = 'axcf'
+        machine = chooser.getMachine()
+        //platform = 'axcf'
+        platform = chooser.getPlatform()
+        //device = 'axcf'
+        device = chooser.getDevice()
         
         currentBuild.description = "For Device ${device}"
     }
