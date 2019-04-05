@@ -2,10 +2,14 @@
 
 pwd
 
-PLATFORM=$1
+DEVICE=$1
 
 echo "source poky/oe-init-build-env \"\""
 
-echo $PLATFORM
+echo $DEVICE
 
-echo "bitbake $PLATFORM-image-base"
+echo "bitbake $DEVICE-image-base"
+
+if (params.SPECIAL_BUILD == true) {
+    echo "bitbake $DEVICE-image-special"
+}
