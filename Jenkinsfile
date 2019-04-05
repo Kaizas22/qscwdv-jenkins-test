@@ -51,7 +51,6 @@ node {
         //repository.checkoutSvn(params.SVN)
     }
     stage('Prepare Environment') {
-        echo 'Building..'
         sh "bash/init_env.sh 12345 ${TARGET}"
     }
     stage('Clean Firmware') {
@@ -64,7 +63,7 @@ node {
         echo 'Build Bundle..'
     }
     stage('Build Linux 64bit SDK') {
-        if (params.BUILD_SDK == "true") {
+        if (params.BUILD_SDK = "true") {
             sh "bash/build_sdk.sh A-image-sdk x86_64"
         }
         else {
@@ -72,7 +71,7 @@ node {
         }
     }
     stage('Build Linux 32bit SDK') {
-        if (params.BUILD_SDK == "true") {
+        if (params.BUILD_SDK = "true") {
             sh "bash/build_sdk.sh A-image-sdk i686"
         }
         else {
@@ -80,7 +79,7 @@ node {
         }
     }
     stage('Build Windows 64bit SDK') {
-        if (params.BUILD_SDK == "true") {
+        if (params.BUILD_SDK = "true") {
             sh "bash/build_sdk.sh A-image-mingw mingw32-64"
         }
         else {
@@ -88,7 +87,7 @@ node {
         }
     }
     stage('Build 64bit Linux Kernel SDK') {
-        if (params.BUILD_KERNEL_SDK == "true") {
+        if (params.BUILD_KERNEL_SDK = "true") {
             sh "bash/build_sdk.sh A-image-kernel-sdk x86_64"
         }
         else {
@@ -96,7 +95,7 @@ node {
         }
     }
     stage('Build 32bit Linux Kernel SDK') {
-        if (params.BUILD_KERNEL_SDK == "true") {
+        if (params.BUILD_KERNEL_SDK = "true") {
             sh "bash/build_sdk.sh A-image-kernel-sdk i686"
         }
         else {
