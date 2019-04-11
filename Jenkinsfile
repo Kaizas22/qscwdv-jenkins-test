@@ -62,7 +62,7 @@ node {
         checkout.checkBranches(version)
         def yocto_version = checkout.getYoctoVersion()
         echo "Yocto Version: ${yocto_version}"
-        def yocto_upstream_branch = chechkout.getUpstreamBranch()
+        def yocto_upstream_branch = checkout.getUpstreamBranch()
         echo "Yocto Upstream Branch: ${yocto_upstream_branch}"
         def yocto_branch = checkout.getYoctoBranch()
         echo "Yocto Branch: ${yocto_branch}"
