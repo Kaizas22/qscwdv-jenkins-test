@@ -8,33 +8,33 @@ class Target {
     String device
 }
 
-A_VERSIONS = ["master","v1.0","v1.1","v1.2","v2.0"]
-B_VERSIONS = ["master","v1.0","v1.1","v1.2"]
-C_VERSIONS = ["master","v1.0","v1.1"]
-D_VERSIONS = ["master","v1.0"]
-E_VERSIONS = ["master"]
+A_VERSIONS = ['master','v1.0','v1.1','v1.2','v2.0']
+B_VERSIONS = ['master','v1.0','v1.1','v1.2']
+C_VERSIONS = ['master','v1.0','v1.1']
+D_VERSIONS = ['master','v1.0']
+E_VERSIONS = ['master']
 
 
 
 def chooseLinuxVersion(v) {
     switch (v) {
-        case "v1.0":
-            version = "v1.0"
+        case 'v1.0':
+            version = 'v1.0'
             break
-        case "v1.1":
-            version = "v1.1"
+        case 'v1.1':
+            version = 'v1.1'
             break
-        case "v1.2":
-            version = "v1.2"
+        case 'v1.2':
+            version = 'v1.2'
             break
-        case "v2.0":
-            version = "v2.0"
+        case 'v2.0':
+            version = 'v2.0'
             break
-        case "v2.1":
-            version = "v2.1"
+        case 'v2.1':
+            version = 'v2.1'
             break
         default:
-            version = "master"
+            version = 'master'
     }
 }
 
