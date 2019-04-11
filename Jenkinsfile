@@ -61,8 +61,11 @@ node {
         // check version to get correct branches for every version
         checkout.checkBranches(version)
         def yocto_version = checkout.getYoctoVersion()
+        echo "Yocto Version: ${yocto_version}"
         def yocto_upstream_branch = chechkout.getUpstreamBranch()
+        echo "Yocto Upstream Branch: ${yocto_upstream_branch}"
         def yocto_branch = checkout.getYoctoBranch()
+        echo "Yocto Branch: ${yocto_branch}"
         
         // checkout git repositories
         echo "checkout.checkoutGit(yocto-meta/poky, yocto_version)"
