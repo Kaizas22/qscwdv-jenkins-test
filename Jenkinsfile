@@ -57,17 +57,25 @@ node {
     stage('Checkout') {
         // include groovy file to checkout repositories
         def checkout = load "${rootDir}/groovy/checkout.groovy"
+        
+        // check version to get correct branches for every version
+        checkout.checkBranches(version)
+        def yocto_version = checkout.getYoctoVersion()
+        def yocto_upstream_branch = chechkout.getUpstreamBranch()
+        def yocto_branch = checkout.getYoctoBranch()
+        
         // checkout git repositories
-        echo "checkout.checkoutGit(yocto-meta/poky, version)"
-        echo "checkout.checkoutGit(yocto-meta/meta-openembedded, version)"
-        echo "checkout.checkoutGit(yocto-meta/meta-mingw, version)"
-        echo "checkout.checkoutGit(yocto-meta/meta-security, version)"
-        echo "checkout.checkoutGit(yocto-meta/meta-rauc, version)"
-        echo "checkout.checkoutGit(yocto-mymeta/meta-custom, version)"
-        echo "checkout.checkoutGit(yocto-mymeta/meta-fw, version)"
-        echo "checkout.checkoutGit(targets/${platform}/meta-${repository}_bsp, version)"
-        echo "checkout.checkoutGit(targets/${platform}/meta-${repository}_product, version)"
+        echo "checkout.checkoutGit(yocto-meta/poky, yocto_version)"
+        echo "checkout.checkoutGit(yocto-meta/meta-openembedded, yocto_upstream_branch)"
+        echo "checkout.checkoutGit(yocto-meta/meta-mingw, yocto_upstream_branch)"
+        echo "checkout.checkoutGit(yocto-meta/meta-security, yocto_upstream_branch)"
+        echo "checkout.checkoutGit(yocto-meta/meta-rauc, yocto_upstream_branch)"
+        echo "checkout.checkoutGit(yocto-mymeta/meta-custom, yocto_branch)"
+        echo "checkout.checkoutGit(yocto-mymeta/meta-fw, yocto_branch)"
+        echo "checkout.checkoutGit(targets/${platform}/meta-${repository}_bsp, yocto_branch)"
+        echo "checkout.checkoutGit(targets/${platform}/meta-${repository}_product, yocto_branch)"
         checkout.checkoutGit('asfjakl-', version)
+        
         // checkout svn repositories
         echo "checkout.checkoutSvn(params.SVN)"
     }
@@ -133,5 +141,5 @@ node {
         result.copyResults(machine, device)
         result.archiveResults()
     }
-    currentBuild.displayName = "#${BUILD_NUMBER}: branch ${version}"
+    currentBuild.displayName = "#${BUILD_NUMBER}: [${device}] branch ${version}"
 }
