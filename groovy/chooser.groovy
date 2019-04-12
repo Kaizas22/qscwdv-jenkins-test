@@ -22,7 +22,7 @@ def chooseLinuxVersion(v) {
             version = '2019.0 LTS'
             break
         case '2019.3':
-            version = '2019.0 LTS'
+            version = '2019.3'
             break
         default:
             version = 'master'
