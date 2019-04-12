@@ -4,9 +4,9 @@ MACHINE=$1
 DEVICE=$2
 
 copy_mode="Error"
-build_folder=${PWD}/"build"
-output_folder=${PWD}/"result"
-svn_folder=${PWD}/"fw_dummy/testdir"
+build_folder=${PWD}/build
+output_folder=${PWD}/result
+svn_folder=${PWD}/fw_dummy/testdir
 
 copy() {
     from="$1"
@@ -32,7 +32,7 @@ mkdir -p ${output_folder}/sdk/
 mkdir -p ${output_folder}/usb/
 mkdir -p ${output_folder}/version_info/
 
-deploy_folder=${build_folder}"/tmp/deploy"
+deploy_folder=${build_folder}/tmp/deploy
 
 copy ${deploy_folder}/images/${MACHINE}/${DEVICE}-image-base-${MACHINE}.* ${output_folder}/usb/${DEVICE}-image-base.*
 copy ${deploy_folder}/images/${MACHINE}/${DEVICE}-bundle-base-${MACHINE}.raucb ${output_folder}/update/${DEVICE}-bundle-base.raucb
@@ -53,11 +53,11 @@ if [ "${SPECIAL_BUILD}" == "true" ]; then
     tar -czf ${output_folder}/sources.tar.gz ${deploy_folder}/sources
 fi
 
-mkdir ${build_folder}"/temp"
-cd ${build_folder}"/temp"
+mkdir ${build_folder}/temp
+cd ${build_folder}/temp
 tar -xzf ${deploy_folder}/images/${MACHINE}/${DEVICE}-image-base-${MACHINE}.tar.gz
 copy ${build_folder}/temp/etc/plcnext/fwversion ${output_folder}/version_info/
 copy ${build_folder}/temp/etc/plcnext/FwVersionJenkins.properties ${output_folder}/version_info/
-tar -czf ${output_folder}/licenses.tar.gz ${build_folder}"/temp/usr/share/common-licenses/
+tar -czf ${output_folder}/licenses.tar.gz ${build_folder}/temp/usr/share/common-licenses/
 cd ${build_folder}
 rm -rf temp/
