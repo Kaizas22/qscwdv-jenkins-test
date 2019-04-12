@@ -150,6 +150,6 @@ node {
         result.copyResults("12345", machine, device)
         result.archiveResults()
     }
-    currentBuild.displayName = "#${BUILD_NUMBER}: [${device}, ${version}] branch ${params.FW_SVN_BRANCH}"
+    currentBuild.displayName = "#${BUILD_NUMBER}: [${device}, ${version}] ${params.FW_SVN_BRANCH} ${params.FW_VERSION_STATE}"
     currentBuild.description = "${BUILD_DESCRIPTION}"
 }
