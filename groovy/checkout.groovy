@@ -7,7 +7,7 @@ def yocto_branch
 
 def checkBranches(version) {
     switch (version) {
-        case '2019.0 LTS:
+        case '2019.0 LTS':
             yocto_version = '2019.0_LTS'
             yocto_upstream_branch = yocto_version
             yocto_branch = yocto_version
