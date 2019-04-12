@@ -1,6 +1,6 @@
 node {
     
-    def VERSIONS = ['master','2019.0 LTS','2019.3','v1.2','v2.0','v2.1']
+    def VERSIONS = ['master','2019.0 LTS','2019.3']
     def version
     def TARGETS = ['AXC F 2152','B','RFC 4072S','D','E']
     def target
@@ -24,7 +24,8 @@ node {
         parameters ([
             choice(name: 'TARGET', choices: TARGETS.join('\n'), description: 'Choose your target.'),
             choice(name: 'LINUX_VERSION', choices: VERSIONS.join('\n'), description: 'Choose the linux version.'),
-            string(name: 'SVN', defaultValue: 'TEST/', description: 'Which SVN branch should be used?'),
+            string(name: 'BUILD_DESCRIPTION', defaultValue: '', description: 'Descripe your build.'),
+            string(name: 'FW_SVN_BRANCH', defaultValue: 'trunk/', description: 'Which SVN branch should be used?'),
             booleanParam(name: 'BUILD_SDK', defaultValue: false, description: 'Should a SDK be built?'),
             booleanParam(name: 'BUILD_KERNEL_SDK', defaultValue: false, description: 'Should a SDK for the kernel be built?'),
             booleanParam(name: 'ALLOW_ROOT', defaultValue: true, description: 'Should root login allowed?'),
@@ -37,6 +38,8 @@ node {
         ])
     ]);
 
+    env.FW_VERSION_STATE = "alpha"
+    env.FW_SVN_BRANCH = "${FW_SVN_BRANCH}"
     // checkout repository with Jenkinsfile to set rootDir
     checkout scm
     def rootDir = pwd()
@@ -55,8 +58,6 @@ node {
         machine = chooser.getMachine()
         platform = chooser.getPlatform()
         device = chooser.getDevice()
-        
-        currentBuild.description = "For Device ${device}"
     }
     
     stage('Checkout') {
@@ -82,10 +83,10 @@ node {
         echo "checkout.checkoutGit(yocto-mymeta/meta-fw, yocto_branch)"
         echo "checkout.checkoutGit(targets/${platform}/meta-${repository}_bsp, yocto_branch)"
         echo "checkout.checkoutGit(targets/${platform}/meta-${repository}_product, yocto_branch)"
-        checkout.checkoutGit('asfjakl-', version)
+        checkout.checkoutGit('asfjakl-', 'master')
         
         // checkout svn repositories
-        echo "checkout.checkoutSvn(params.SVN)"
+        echo "checkout.checkoutSvn(params.FW_SVN_BRANCH)"
     }
     stage('Prepare Environment') {
         sh "bash/init_env.sh 12345 ${machine}"
@@ -140,7 +141,7 @@ node {
         }
     }
     stage('Build API Documentation') {
-        echo 'Build API Documentation..'
+        sh 'bash/build_doc.sh'
     }
     stage('Copy Results') {        
         // include groovy file to copy results
@@ -150,4 +151,5 @@ node {
         result.archiveResults()
     }
     currentBuild.displayName = "#${BUILD_NUMBER}: [${device}] branch ${version}"
+    currentBuild.description = "${BUILD_DESCRIPTION}"
 }

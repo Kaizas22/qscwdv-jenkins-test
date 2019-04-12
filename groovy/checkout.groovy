@@ -17,21 +17,6 @@ def checkBranches(version) {
             yocto_upstream_branch = yocto_version
             yocto_branch = yocto_version
             break
-        case 'v1.2':
-            yocto_version = 'v2.3.4'
-            yocto_upstream_branch = 'v1.0'
-            yocto_branch = 'v1.2'
-            break
-        case 'v2.0':
-            yocto_version = 'v2.4.4'
-            yocto_upstream_branch = 'v2.0'
-            yocto_branch = 'v2.0'
-            break
-        case 'v2.1':
-            yocto_version = 'v2.5.4'
-            yocto_upstream_branch = 'v2.0'
-            yocto_branch = 'v2.1'
-            break
         default:
             yocto_version = 'yocto-2.4.4'
             yocto_upstream_branch = '19.3.x'

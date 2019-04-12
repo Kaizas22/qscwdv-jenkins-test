@@ -8,10 +8,10 @@ class Target {
     String device
 }
 
-AXC_F_2152_VERSIONS = ['master','2019.0 LTS','2019.3','v1.2','v2.0']
-B_VERSIONS = ['master','v1.0','v1.1','v1.2']
-RFC_4072S_VERSIONS = ['master','2019.0 LTS','v1.1']
-D_VERSIONS = ['master','v1.0']
+AXC_F_2152_VERSIONS = ['master','2019.0 LTS','2019.3']
+B_VERSIONS = ['master','2019.0 LTS']
+RFC_4072S_VERSIONS = ['master','2019.0 LTS']
+D_VERSIONS = ['master','2019.0 LTS']
 E_VERSIONS = ['master']
 
 
@@ -19,19 +19,10 @@ E_VERSIONS = ['master']
 def chooseLinuxVersion(v) {
     switch (v) {
         case '2019.0 LTS':
-            version = 'v1.0'
-            break
-        case 'v1.1':
-            version = 'v1.1'
-            break
-        case 'v1.2':
-            version = 'v1.2'
+            version = '2019.0 LTS'
             break
         case '2019.3':
-            version = 'v2.0'
-            break
-        case 'v2.1':
-            version = 'v2.1'
+            version = '2019.0 LTS'
             break
         default:
             version = 'master'
@@ -50,7 +41,7 @@ def chooseTarget(t) {
             break
         case 'B':
             sanityCheck(B_VERSIONS, version)
-            target = new Target([repository: 'axc', machine: 'axcf', platform: 'axcf', device: 'bxcf'])
+            target = new Target([repository: 'axc2152', machine: 'axcf2152', platform: 'axcf2152', device: 'bxcf'])
             break
         case 'RFC 4072S':
             sanityCheck(RFC_4072S_VERSIONS, version)
@@ -58,7 +49,7 @@ def chooseTarget(t) {
             break
         case 'D':
             sanityCheck(D_VERSIONS, version)
-            target = new Target([repository: 'rfc', machine: 'rfc-64', platform: 'rfc', device: 'dfc'])
+            target = new Target([repository: 'rfc480', machine: 'rfc480-64', platform: 'rfc480', device: 'dfc'])
             break        
         default:
             target = new Target([repository: 'ec', machine: 'ec-32', platform: 'ec', device: 'ekg'])
