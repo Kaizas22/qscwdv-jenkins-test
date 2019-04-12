@@ -25,7 +25,7 @@ node {
             choice(name: 'TARGET', choices: TARGETS.join('\n'), description: 'Choose your target.'),
             choice(name: 'LINUX_VERSION', choices: VERSIONS.join('\n'), description: 'Choose the linux version.'),
             string(name: 'BUILD_DESCRIPTION', defaultValue: '', description: 'Descripe your build.'),
-            string(name: 'SVN', defaultValue: 'TEST/', description: 'Which SVN branch should be used?'),
+            string(name: 'FW_SVN_BRANCH', defaultValue: 'trunk/', description: 'Which SVN branch should be used?'),
             booleanParam(name: 'BUILD_SDK', defaultValue: false, description: 'Should a SDK be built?'),
             booleanParam(name: 'BUILD_KERNEL_SDK', defaultValue: false, description: 'Should a SDK for the kernel be built?'),
             booleanParam(name: 'ALLOW_ROOT', defaultValue: true, description: 'Should root login allowed?'),
@@ -38,6 +38,8 @@ node {
         ])
     ]);
 
+    env.FW_VERSION_STATE = "alpha"
+    env.FW_SVN_BRANCH = "${FW_SVN_BRANCH}"
     // checkout repository with Jenkinsfile to set rootDir
     checkout scm
     def rootDir = pwd()
@@ -84,7 +86,7 @@ node {
         checkout.checkoutGit('asfjakl-', version)
         
         // checkout svn repositories
-        echo "checkout.checkoutSvn(params.SVN)"
+        echo "checkout.checkoutSvn(params.FW_SVN_BRANCH)"
     }
     stage('Prepare Environment') {
         sh "bash/init_env.sh 12345 ${machine}"
@@ -149,4 +151,5 @@ node {
         result.archiveResults()
     }
     currentBuild.displayName = "#${BUILD_NUMBER}: [${device}] branch ${version}"
+    currentBuild.description = "${BUILD_DESCRIPTION}"
 }
