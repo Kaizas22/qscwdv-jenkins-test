@@ -1,7 +1,9 @@
 #!/bin/bash
 
-copy_mode="Error"
+MACHINE=$1
+DEVICE=$2
 
+copy_mode="Error"
 build_folder=${PWD}/"build"
 output_folder=${PWD}/"result"
 svn_folder=${PWD}/"fw_dummy/testdir"
