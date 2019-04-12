@@ -6,14 +6,15 @@ startpwd=$(pwd)
 
 SVN_REV=$1
 MACHINE=$2
+DEVICE=$3
 
 echo "svn: "${SVN_REV}
-echo "device: ""${DEVICE}"
-echo "linux version: ""${LINUX_VERSION}"
-echo "build sdk: ""${BUILD_SDK}"
-echo "build kernel sdk: ""${BUILD_KERNEL_SDK}"
-echo "fw svn branch: ""${FW_SVN_BRANCH}"
-
+echo "machine: "${MACHINE}
+echo "device: "${DEVICE}
+echo "linux version: "${LINUX_VERSION}
+echo "build sdk: "${BUILD_SDK}
+echo "build kernel sdk: "${BUILD_KERNEL_SDK}
+echo "fw svn branch: "${FW_SVN_BRANCH}
 
 if [ ! -d "build" ]; then
     mkdir build
