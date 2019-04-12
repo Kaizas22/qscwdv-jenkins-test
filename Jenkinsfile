@@ -1,6 +1,6 @@
 node {
     
-    def VERSIONS = ['master','2019.0 LTS','2019.3','v1.2','v2.0','v2.1']
+    def VERSIONS = ['master','2019.0 LTS','2019.3']
     def version
     def TARGETS = ['AXC F 2152','B','RFC 4072S','D','E']
     def target
@@ -24,6 +24,7 @@ node {
         parameters ([
             choice(name: 'TARGET', choices: TARGETS.join('\n'), description: 'Choose your target.'),
             choice(name: 'LINUX_VERSION', choices: VERSIONS.join('\n'), description: 'Choose the linux version.'),
+            string(name: 'BUILD_DESCRIPTION', defaultValue: '', description: 'Descripe your build.'),
             string(name: 'SVN', defaultValue: 'TEST/', description: 'Which SVN branch should be used?'),
             booleanParam(name: 'BUILD_SDK', defaultValue: false, description: 'Should a SDK be built?'),
             booleanParam(name: 'BUILD_KERNEL_SDK', defaultValue: false, description: 'Should a SDK for the kernel be built?'),
@@ -55,8 +56,6 @@ node {
         machine = chooser.getMachine()
         platform = chooser.getPlatform()
         device = chooser.getDevice()
-        
-        currentBuild.description = "For Device ${device}"
     }
     
     stage('Checkout') {
