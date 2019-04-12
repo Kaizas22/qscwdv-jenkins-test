@@ -2,7 +2,7 @@ node {
     
     def VERSIONS = ['master','2019.0 LTS','2019.3','v1.2','v2.0','v2.1']
     def version
-    def TARGETS = ['AXC F 2151','B','RFC 4072S','D','E']
+    def TARGETS = ['AXC F 2152','B','RFC 4072S','D','E']
     def target
     
     def repository
