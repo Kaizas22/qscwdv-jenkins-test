@@ -1,5 +1,5 @@
-def copyResults(machine, device) {
-    sh "bash/copy_results.sh ${machine} ${device}"
+def copyResults(svnrevision, machine, device) {
+    sh "bash/copy_results.sh ${svnrevision} ${machine} ${device}"
 }
 
 def archiveResults() {
