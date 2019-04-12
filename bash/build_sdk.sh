@@ -11,10 +11,8 @@ SDKMACHINE=$2
 echo ${PLATFORMSDK}
 echo ${SDKMACHINE}
 
-cd ${startpwd}/build/conf
-rm local.conf
-cp local.conf.template local.conf
-echo \"SDKMACHINE = \"${SDKMACHINE}\"\" >> local.conf
-cd ..
+rm ${startpwd}/build/conf/local.conf
+cp ${startpwd}/build/conf/local.conf.template ${startpwd}/build/conf/local.conf
+echo \"SDKMACHINE = \"${SDKMACHINE}\"\" >> ${startpwd}/build/conflocal.conf
 
 echo "bitbake ${PLATFORMSDK} -c populate_sdk"
