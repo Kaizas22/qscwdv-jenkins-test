@@ -95,7 +95,7 @@ node {
         sh "bash/fw_cleanup.sh"
     }
     stage('Build Image') {
-        sh "bash/build_image.sh ${device}"
+        sh "bash/build_image.sh ${platform} ${device}"
     }
     stage('Build Bundle') {
         sh "bash/build_bundle.sh ${platform}"
