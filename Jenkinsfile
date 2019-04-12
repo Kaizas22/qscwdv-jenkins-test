@@ -89,7 +89,7 @@ node {
         echo "checkout.checkoutSvn(params.FW_SVN_BRANCH)"
     }
     stage('Prepare Environment') {
-        sh "bash/init_env.sh 12345 ${machine}"
+        sh "bash/init_env.sh 12345 ${machine} ${device}"
     }
     stage('Clean Firmware') {
         sh "bash/fw_cleanup.sh"
