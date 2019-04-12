@@ -147,7 +147,7 @@ node {
         // include groovy file to copy results
         def result = load "${rootDir}/groovy/result.groovy"
         
-        result.copyResults(machine, device)
+        result.copyResults("12345", machine, device)
         result.archiveResults()
     }
     currentBuild.displayName = "#${BUILD_NUMBER}: [${device}] branch ${version}"
