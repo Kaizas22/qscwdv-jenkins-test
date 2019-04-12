@@ -1,7 +1,8 @@
 #!/bin/bash
 
-MACHINE=$1
-DEVICE=$2
+SVN_REV=$1
+MACHINE=$2
+DEVICE=$3
 
 copy_mode="Error"
 build_folder=${PWD}/build
