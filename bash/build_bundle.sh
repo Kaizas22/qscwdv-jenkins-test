@@ -10,7 +10,8 @@ PLATFORM=$1
 if [[ "${PLATFORM}" == "axcf2152" && "${LINUX_VERSION}" == "2019.0 LTS" ]]; then
     echo "bitbake ${PLATFORM}-image-base-bundle"
 fi
-if [[ "${PLATFORM}" == "axcf2152" && "${LINUX_VERSION}" != "2019.0 LTS" ]]; then
+
+if [[ "${PLATFORM}" == "axcf2152" && "${LINUX_VERSION}" == "master" ]]; then
     echo "bitbake ${PLATFORM}-bundle-base"
 
     echo "PREFERRED_PROVIDER_virtual/kernel = \"linux-rt-test\"" >> ${startpwd}/build/conf/local.conf
@@ -21,6 +22,7 @@ fi
 if [[ "${PLATFORM}" == "rfc480" && "${LINUX_VERSION}" == "2019.0 LTS" ]]; then
     echo "bitbake ${DEVICE}-image-base-bundle"
 fi
+
 if [[ "${PLATFORM}" == "rfc480" && "${LINUX_VERSION}" != "2019.0 LTS" ]]; then
     echo "bitbake ${PLATFORM}-bundle-base"
 fi
