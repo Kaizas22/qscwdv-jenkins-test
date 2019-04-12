@@ -141,7 +141,7 @@ node {
         }
     }
     stage('Build API Documentation') {
-        echo 'Build API Documentation..'
+        sh 'bash/build_doc.sh'
     }
     stage('Copy Results') {        
         // include groovy file to copy results
