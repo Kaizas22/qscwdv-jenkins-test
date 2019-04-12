@@ -2,7 +2,8 @@
 
 startpwd=$(pwd)
 
-DEVICE=$1
+PLATFORM=$1
+DEVICE=$2
 
 #source bash/config/env_config
 #source poky/oe-init-build-env "" 
