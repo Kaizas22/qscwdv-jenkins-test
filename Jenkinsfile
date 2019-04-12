@@ -1,8 +1,8 @@
 node {
     
-    def VERSIONS = ['master','v1.0','v1.1','v1.2','v2.0','v2.1']
+    def VERSIONS = ['master','2019.0 LTS','2019.3','v1.2','v2.0','v2.1']
     def version
-    def TARGETS = ['A','B','C','D','E']
+    def TARGETS = ['AXC F 2151','B','RFC 4072S','D','E']
     def target
     
     def repository
@@ -27,8 +27,13 @@ node {
             string(name: 'SVN', defaultValue: 'TEST/', description: 'Which SVN branch should be used?'),
             booleanParam(name: 'BUILD_SDK', defaultValue: false, description: 'Should a SDK be built?'),
             booleanParam(name: 'BUILD_KERNEL_SDK', defaultValue: false, description: 'Should a SDK for the kernel be built?'),
+            booleanParam(name: 'ALLOW_ROOT', defaultValue: true, description: 'Should root login allowed?'),
+            booleanParam(name: 'TRUST_RELEASE_SIGNATURE', defaultValue: false, description: 'Trust update container the release signature?'),
+            booleanParam(name: 'SIGN_RELEASE_SIGNATURE', defaultValue: false, description: 'Should the update container be signed with release signature?'),
             booleanParam(name: 'BOOTLOADER_UPDATE', defaultValue: false, description: 'Is a bootloader update necessary?'),
-            booleanParam(name: 'SPECIAL_BUILD', defaultValue: false, description: 'A special build is needed?')
+            booleanParam(name: 'SPECIAL_BUILD', defaultValue: false, description: 'A special build is needed?'),
+            booleanParam(name: 'FW_UNIT_TEST', defaultValue: true, description: 'Should the unit tests be a part of the rootfs?'),
+            booleanParam(name: 'FW_LICENCE_EVALUATION', defaultValue: false, description: 'Build with license evaluation mode?'),
         ])
     ]);
 
@@ -86,7 +91,7 @@ node {
         sh "bash/init_env.sh 12345 ${machine}"
     }
     stage('Clean Firmware') {
-        echo 'Clean Firmware..'
+        sh "bash/fw_cleanup.sh"
     }
     stage('Build Image') {
         sh "bash/build_image.sh ${device}"

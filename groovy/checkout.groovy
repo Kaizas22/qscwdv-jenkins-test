@@ -1,5 +1,5 @@
 GIT_URL = 'https://github.com/Kaizas22/'
-SVN_URL = 'https://svn.test.com/'
+SVN_URL = 'https://svn01.com/'
 
 def yocto_version 
 def yocto_upstream_branch
@@ -7,15 +7,15 @@ def yocto_branch
 
 def checkBranches(version) {
     switch (version) {
-        case 'v1.0':
-            yocto_version = 'v2.2.1'
-            yocto_upstream_branch = 'v1.0'
-            yocto_branch = 'v1.0'
+        case '2019.0 LTS:
+            yocto_version = '2019.0_LTS'
+            yocto_upstream_branch = yocto_version
+            yocto_branch = yocto_version
             break
-        case 'v1.1':
-            yocto_version = 'v2.3.3'
-            yocto_upstream_branch = 'v1.0'
-            yocto_branch = 'v1.1'
+        case '2019.3':
+            yocto_version = '2019.3'
+            yocto_upstream_branch = yocto_version
+            yocto_branch = yocto_version
             break
         case 'v1.2':
             yocto_version = 'v2.3.4'
@@ -33,9 +33,9 @@ def checkBranches(version) {
             yocto_branch = 'v2.1'
             break
         default:
-            yocto_version = 'v2.6.2'
-            yocto_upstream_branch = 'v2.0'
-            yocto_branch = 'v3.0'
+            yocto_version = 'yocto-2.4.4'
+            yocto_upstream_branch = '19.3.x'
+            yocto_branch = 'master'
     }   
 }
 

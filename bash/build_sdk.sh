@@ -1,20 +1,21 @@
-#!/bin/bash -e
+#!/bin/bash
 
-pwd
+startpwd=$(pwd)
 
 PLATFORMSDK=$1
 SDKMACHINE=$2
 
-echo "source poky/oe-init-build-env \"\""
+#source bash/config/env_config
+#source poky/oe-init-build-env ""
 
-echo $PLATFORMSDK
-echo $SDKMACHINE
-echo $SDKTYPE
+echo ${PLATFORMSDK}
+echo ${SDKMACHINE}
 
-echo "cd conf"
-echo "rm local.conf"
-echo "cp local.conf.template local.conf"
-echo "echo \"SDKMACHINE = \"$SDKMACHINE\"\" >> local.conf"
-echo "cd .."
+cd conf
+rm local.conf
+cp local.conf.template local.conf
+echo \"SDKMACHINE = \"${SDKMACHINE}\"\" >> local.conf
 
-echo "bitbake $PLATFORMSDK -c populate_sdk"
+cd ..
+
+echo "bitbake ${PLATFORMSDK} -c populate_sdk"

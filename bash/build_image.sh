@@ -1,15 +1,24 @@
-#!/bin/bash -e
+#!/bin/bash
 
-pwd
+startpwd=$(pwd)
 
 DEVICE=$1
 
-echo "source poky/oe-init-build-env \"\""
+#source bash/config/env_config
+#source poky/oe-init-build-env "" 
 
-echo $DEVICE
+echo "bitbake ${DEVICE}-image-base"
 
-echo "bitbake $DEVICE-image-base"
+if [[ "${DEVICE}" == "axcf2152" && "${LINUX_VERSION}" == "master" ]]; then
+    echo "PREFERRED_PROVIDER_virtual/kernel = \"linux-rt-test\"" >> ${startpwd}/build/conf/local.conf
+    echo "bitbake ${DEVICE}-image-test"
+    sed -i "s:PREFERRED_PROVIDER_virtual/kernel\ =.*::g" ${startpwd}/build/conf/local.conf
+fi
 
-if [ $SPECIAL_BUILD == "true" ]; then
-    echo "bitbake $DEVICE-image-special"
+if [ ${SPECIAL_BUILD} == "true" ]; then
+    if [[ "${PLATFORM}" == "rfc480" && "${LINUX_VERSION}" == "2019.0 LTS" ]]; then
+        echo "bitbake ${DEVICE}-image-production"
+    else
+        echo "bitbake ${PLATFORM}-image-production"
+    fi
 fi
