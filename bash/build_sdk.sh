@@ -11,7 +11,7 @@ SDKMACHINE=$2
 echo ${PLATFORMSDK}
 echo ${SDKMACHINE}
 
-cd ${startpwd}/conf
+cd ${startpwd}build/conf
 rm local.conf
 cp local.conf.template local.conf
 echo \"SDKMACHINE = \"${SDKMACHINE}\"\" >> local.conf
