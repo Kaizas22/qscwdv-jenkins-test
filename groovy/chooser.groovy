@@ -45,7 +45,7 @@ def chooseTarget(t) {
             break
         case 'RFC 4072S':
             sanityCheck(RFC_4072S_VERSIONS, version)
-            target = new Target([repository: 'rfc480', machine: 'rfc480-64', platform: 'rfc480', device: 'rfc480'])
+            target = new Target([repository: 'rfc480', machine: 'rfc480-64', platform: 'rfc480', device: 'rfc4072s'])
             break
         case 'D':
             sanityCheck(D_VERSIONS, version)
