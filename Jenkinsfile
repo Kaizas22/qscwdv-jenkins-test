@@ -1,9 +1,7 @@
 node {
     
     def VERSIONS = ['master','2019.0 LTS','2019.3']
-    def version
     def TARGETS = ['AXC F 2152','B','RFC 4072S','D','E']
-    def target
     
     def repository
     def machine
@@ -40,6 +38,7 @@ node {
 
     env.FW_VERSION_STATE = "alpha"
     env.FW_SVN_BRANCH = "${FW_SVN_BRANCH}"
+
     // checkout repository with Jenkinsfile to set rootDir
     checkout scm
     def rootDir = pwd()
@@ -50,9 +49,6 @@ node {
 
         chooser.chooseLinuxVersion(params.LINUX_VERSION) 
         chooser.chooseTarget(params.TARGET)
-
-        version = chooser.getVersion()
-        target = chooser.getTarget()
         
         repository = chooser.getRepository()
         machine = chooser.getMachine()
@@ -65,13 +61,10 @@ node {
         def checkout = load "${rootDir}/groovy/checkout.groovy"
         
         // check version to get correct branches for every version
-        checkout.checkBranches(version)
+        checkout.checkBranches(params.LINUX_VERSION)
         def yocto_version = checkout.getYoctoVersion()
-        echo "Yocto Version: ${yocto_version}"
         def yocto_upstream_branch = checkout.getUpstreamBranch()
-        echo "Yocto Upstream Branch: ${yocto_upstream_branch}"
         def yocto_branch = checkout.getYoctoBranch()
-        echo "Yocto Branch: ${yocto_branch}"
         
         // checkout git repositories
         echo "checkout.checkoutGit(yocto-meta/poky, yocto_version)"
@@ -83,7 +76,6 @@ node {
         echo "checkout.checkoutGit(yocto-mymeta/meta-fw, yocto_branch)"
         echo "checkout.checkoutGit(targets/${platform}/meta-${repository}_bsp, yocto_branch)"
         echo "checkout.checkoutGit(targets/${platform}/meta-${repository}_product, yocto_branch)"
-        checkout.checkoutGit('asfjakl-', 'master')
         
         // checkout svn repositories
         echo "checkout.checkoutSvn(params.FW_SVN_BRANCH)"
@@ -150,6 +142,6 @@ node {
         result.copyResults("12345", machine, device)
         result.archiveResults()
     }
-    currentBuild.displayName = "#${BUILD_NUMBER}: [${device}, ${version}] ${params.FW_SVN_BRANCH} ${FW_VERSION_STATE}"
+    currentBuild.displayName = "#${BUILD_NUMBER}: [${params.TARGET}, ${params.LINUX_VERSION}] ${params.FW_SVN_BRANCH} ${FW_VERSION_STATE}"
     currentBuild.description = "${BUILD_DESCRIPTION}"
 }
