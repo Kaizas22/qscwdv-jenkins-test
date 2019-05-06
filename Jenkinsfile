@@ -76,7 +76,7 @@ node {
         echo "checkout.checkoutGit(yocto-mymeta/meta-fw, yocto_branch)"
         echo "checkout.checkoutGit(targets/${platform}/meta-${repository}_bsp, yocto_branch)"
         echo "checkout.checkoutGit(targets/${platform}/meta-${repository}_product, yocto_branch)"
-        println (new File('params/targets.liste').text)
+
         // checkout svn repositories
         echo "checkout.checkoutSvn(params.FW_SVN_BRANCH)"
     }
